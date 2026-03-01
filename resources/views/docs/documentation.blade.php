@@ -3,27 +3,6 @@
 @section('title', 'Full Documentation - FiveM MCP Server')
 
 @section('content')
-<style>
-.tab-button {
-    transition: all 0.2s ease-in-out;
-}
-
-.tab-content {
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-</style>
-
 <div class="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
     <div class="bg-white shadow rounded-lg p-8">
         <h1 class="text-3xl font-extrabold text-gray-900 mb-6">FiveM Development MCP Server</h1>
@@ -85,7 +64,7 @@
                         <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>{
   "mcpServers": {
     "fivem": {
-      "url": "https://your-domain.com/mcp"
+      "url": "https://your-domain.com/fivem"
     }
   }
 }</code></pre>
@@ -103,7 +82,7 @@
   "mcp": {
     "servers": {
       "fivem": {
-        "url": "https://your-domain.com/mcp"
+        "url": "https://your-domain.com/fivem"
       }
     }
   }

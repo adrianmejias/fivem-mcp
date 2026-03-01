@@ -3,27 +3,6 @@
 @section('title', 'Quick Start Guide - FiveM MCP Server')
 
 @section('content')
-<style>
-.tab-button {
-    transition: all 0.2s ease-in-out;
-}
-
-.tab-content {
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-</style>
-
 <div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
     <div class="bg-white shadow rounded-lg p-8">
         <h1 class="text-3xl font-extrabold text-gray-900 mb-6">FiveM MCP Quick Start Guide</h1>
@@ -94,7 +73,11 @@
                         <p class="text-gray-700 mb-3">
                             Ask your server administrator for the MCP server URL. It will look like:
                         </p>
-                        <pre class="bg-gray-100 rounded p-3 text-sm"><code>https://your-domain.com/mcp</code></pre>
+                        <pre class="bg-gray-100 rounded p-3 text-sm"><code>https://your-domain.com/fivem</code></pre>
+                        <p class="text-gray-700 mb-3 mt-4">
+                            If you're using the official hosted server, use this URL:
+                        </p>
+                        <pre class="bg-gray-100 rounded p-3 text-sm"><code>{{ route('fivem') }}</code></pre>
                     </div>
 
                     <!-- Step 2 -->
@@ -110,7 +93,7 @@
                         <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>{
   "mcpServers": {
     "fivem": {
-      "url": "https://your-domain.com/mcp"
+      "url": "https://your-domain.com/fivem"
     }
   }
 }</code></pre>
@@ -121,7 +104,7 @@
   "mcp": {
     "servers": {
       "fivem": {
-        "url": "https://your-domain.com/mcp"
+        "url": "https://your-domain.com/fivem"
       }
     }
   }
