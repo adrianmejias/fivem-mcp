@@ -42,6 +42,20 @@ it('documentation renders correct view', function () {
     $response->assertViewIs('docs.documentation');
 });
 
+it('documentation page includes dynamic tools data', function () {
+    $response = $this->get('/documentation');
+
+    $response->assertViewHas('tools');
+    $response->assertViewHas('resources');
+    $response->assertViewHas('prompts');
+
+    expect($response->viewData('tools'))->toBeArray();
+    expect($response->viewData('resources'))->toBeArray();
+    expect($response->viewData('prompts'))->toBeArray();
+
+    expect($response->viewData('tools'))->not()->toBeEmpty();
+});
+
 it('nonexistent route returns 404', function () {
     $response = $this->get('/nonexistent-page-xyz');
 
