@@ -94,26 +94,9 @@ class GetQBCoreClientEventReference extends Tool
      */
     protected function formatEvent(array $event): string
     {
-        return <<<EOT
-**Event: {$event['name']}**
-
-**Side:** Client
-
-**Description:** {$event['description']}
-
-**Parameters:**
-{$this->formatParameters($event['parameters'])}
-
-**Lua Example:**
-\`\`\`lua
-{$event['lua_example']}
-\`\`\`
-
-**JavaScript Example:**
-\`\`\`javascript
-{$event['js_example']}
-\`\`\`
-EOT;
+        return view('mcp.qbcore.qbcore-event-reference', [
+            'event' => $event,
+        ])->render();
     }
 
     /**
@@ -121,10 +104,10 @@ EOT;
      */
     protected function formatEventList(array $events, string $title): string
     {
-        $list = "# {$title}\n\n";
+        $list = sprintf("# %s\n\n", $title);
 
         foreach ($events as $event) {
-            $list .= "- **{$event['name']}**: {$event['description']}\n";
+            $list .= sprintf("- **%s**: %s\n", $event['name'], $event['description']);
         }
 
         return $list;
@@ -137,7 +120,7 @@ EOT;
     {
         $formatted = '';
         foreach ($parameters as $name => $description) {
-            $formatted .= "- `{$name}`: {$description}\n";
+            $formatted .= sprintf("- `%s`: %s\n", $name, $description);
         }
 
         return $formatted;

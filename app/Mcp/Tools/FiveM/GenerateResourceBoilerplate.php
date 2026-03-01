@@ -29,7 +29,7 @@ class GenerateResourceBoilerplate extends Tool
         ]);
 
         return Response::text(
-            view('mcp.resource-boilerplate', [
+            view('mcp.shared.resource-boilerplate', [
                 'resourceName' => $resourceName,
                 'files' => $files,
             ])->render()

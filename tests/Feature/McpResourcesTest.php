@@ -4,7 +4,7 @@ use App\Mcp\Resources\CodeSnippets;
 use Laravel\Mcp\Request;
 
 it('code snippets resource returns response with content', function () {
-    $resource = new CodeSnippets();
+    $resource = new CodeSnippets;
     $request = new Request([]);
 
     $response = $resource->handle($request);
@@ -14,7 +14,7 @@ it('code snippets resource returns response with content', function () {
 });
 
 it('code snippets response contains content', function () {
-    $resource = new CodeSnippets();
+    $resource = new CodeSnippets;
     $request = new Request([]);
 
     $response = $resource->handle($request);
@@ -24,7 +24,7 @@ it('code snippets response contains content', function () {
 });
 
 it('best practices resource returns response with content', function () {
-    $resource = new \App\Mcp\Resources\BestPractices();
+    $resource = new \App\Mcp\Resources\BestPractices;
     $request = new Request([]);
 
     $response = $resource->handle($request);
@@ -34,7 +34,7 @@ it('best practices resource returns response with content', function () {
 });
 
 it('best practices response contains content', function () {
-    $resource = new \App\Mcp\Resources\BestPractices();
+    $resource = new \App\Mcp\Resources\BestPractices;
     $request = new Request([]);
 
     $response = $resource->handle($request);
@@ -44,7 +44,7 @@ it('best practices response contains content', function () {
 });
 
 it('framework comparison resource returns response with content', function () {
-    $resource = new \App\Mcp\Resources\FrameworkComparison();
+    $resource = new \App\Mcp\Resources\FrameworkComparison;
     $request = new Request([]);
 
     $response = $resource->handle($request);
@@ -54,7 +54,7 @@ it('framework comparison resource returns response with content', function () {
 });
 
 it('framework comparison response contains content', function () {
-    $resource = new \App\Mcp\Resources\FrameworkComparison();
+    $resource = new \App\Mcp\Resources\FrameworkComparison;
     $request = new Request([]);
 
     $response = $resource->handle($request);

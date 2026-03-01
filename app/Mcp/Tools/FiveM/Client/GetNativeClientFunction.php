@@ -193,7 +193,7 @@ class GetNativeClientFunction extends Tool
      */
     protected function formatNativeInfo(array $native, string $language): string
     {
-        return view('mcp.native-function', [
+        return view('mcp.fivem.native-function', [
             'native' => $native,
             'language' => $language,
         ])->render();

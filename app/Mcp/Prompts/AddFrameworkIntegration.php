@@ -29,15 +29,15 @@ class AddFrameworkIntegration extends Prompt
 
         $parts[] = sprintf(
             "%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n%s",
-            "Please:",
-            "1. Update the fxmanifest.lua with framework dependencies",
-            "2. Replace custom player systems with framework functions",
-            "3. Convert money/inventory operations to framework equivalents",
-            "4. Update event handlers to use framework events",
-            "5. Add framework-specific features if beneficial",
-            "6. Maintain backward compatibility where possible",
-            "7. Add comments explaining the integration changes",
-            "Use the GetEventReference tool to find relevant framework events."
+            'Please:',
+            '1. Update the fxmanifest.lua with framework dependencies',
+            '2. Replace custom player systems with framework functions',
+            '3. Convert money/inventory operations to framework equivalents',
+            '4. Update event handlers to use framework events',
+            '5. Add framework-specific features if beneficial',
+            '6. Maintain backward compatibility where possible',
+            '7. Add comments explaining the integration changes',
+            'Use the GetEventReference tool to find relevant framework events.'
         );
 
         return Response::prompt(implode('', $parts));

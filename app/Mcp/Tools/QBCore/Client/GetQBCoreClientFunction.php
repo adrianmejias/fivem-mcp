@@ -131,7 +131,7 @@ class GetQBCoreClientFunction extends Tool
      */
     protected function formatFunctionInfo(array $function, string $language): string
     {
-        return view('mcp.qbcore-function', [
+        return view('mcp.qbcore.qbcore-function', [
             'function' => $function,
             'language' => $language,
         ])->render();

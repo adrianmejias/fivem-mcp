@@ -60,7 +60,7 @@ class GetEventClientReference extends Tool
         }
 
         return Response::text(
-            view('mcp.event-list', [
+            view('mcp.fivem.event-list', [
                 'eventsByType' => $eventsByType,
             ])->render()
         );
@@ -71,7 +71,7 @@ class GetEventClientReference extends Tool
      */
     protected function formatEventInfo(array $event, string $language): string
     {
-        return view('mcp.event-reference', [
+        return view('mcp.fivem.event-reference', [
             'event' => $event,
             'language' => $language,
         ])->render();

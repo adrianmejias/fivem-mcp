@@ -25,19 +25,19 @@ class ConvertLanguage extends Prompt
 
         $parts[] = sprintf(
             "%s\n%s\n%s\n%s\n%s\n%s\n%s\n\n%s\n%s\n%s\n%s\n%s\n%s",
-            "Please:",
-            "1. Convert the code while maintaining functionality",
-            "2. Use idiomatic patterns for the target language",
-            "3. Update native function calls to match language syntax",
-            "4. Adjust event handlers and callbacks",
-            "5. Explain major differences in the conversion",
-            "6. Ensure FiveM compatibility in the target language",
-            "Key differences to consider:",
-            "- Array/table indexing (0 vs 1-based)",
-            "- String formatting",
-            "- Event registration syntax",
-            "- Async patterns",
-            "- Native return values"
+            'Please:',
+            '1. Convert the code while maintaining functionality',
+            '2. Use idiomatic patterns for the target language',
+            '3. Update native function calls to match language syntax',
+            '4. Adjust event handlers and callbacks',
+            '5. Explain major differences in the conversion',
+            '6. Ensure FiveM compatibility in the target language',
+            'Key differences to consider:',
+            '- Array/table indexing (0 vs 1-based)',
+            '- String formatting',
+            '- Event registration syntax',
+            '- Async patterns',
+            '- Native return values'
         );
 
         return Response::prompt(implode('', $parts));

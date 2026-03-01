@@ -309,7 +309,7 @@ class GetInventoryServerFunction extends Tool
      */
     protected function formatFunctionInfo(array $function, string $language): string
     {
-        return view('mcp.cox-function', [
+        return view('mcp.cox.cox-function', [
             'function' => $function,
             'language' => $language,
         ])->render();

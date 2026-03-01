@@ -28,13 +28,13 @@ class DebugIssues extends Prompt
 
         $parts[] = sprintf(
             "%s\n%s\n%s\n%s\n%s\n%s\n\n%s",
-            "Please analyze this issue and:",
-            "1. Identify the likely cause",
-            "2. Suggest fixes with code examples",
-            "3. Explain common mistakes that lead to this issue",
-            "4. Provide preventive measures",
-            "5. Reference FiveM best practices if applicable",
-            "Use the SearchFiveMDocs and GetNativeFunction tools to find relevant information."
+            'Please analyze this issue and:',
+            '1. Identify the likely cause',
+            '2. Suggest fixes with code examples',
+            '3. Explain common mistakes that lead to this issue',
+            '4. Provide preventive measures',
+            '5. Reference FiveM best practices if applicable',
+            'Use the SearchFiveMDocs and GetNativeFunction tools to find relevant information.'
         );
 
         return Response::prompt(implode('', $parts));

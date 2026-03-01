@@ -60,7 +60,7 @@ class GetCOXEventReference extends Tool
         }
 
         return Response::text(
-            view('mcp.cox-event-list', [
+            view('mcp.cox.cox-event-list', [
                 'eventsByType' => $eventsByType,
             ])->render()
         );
@@ -71,7 +71,7 @@ class GetCOXEventReference extends Tool
      */
     protected function formatEventInfo(array $event, string $language): string
     {
-        return view('mcp.cox-event-reference', [
+        return view('mcp.cox.cox-event-reference', [
             'event' => $event,
             'language' => $language,
         ])->render();

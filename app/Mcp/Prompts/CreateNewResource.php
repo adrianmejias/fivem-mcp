@@ -18,17 +18,17 @@ class CreateNewResource extends Prompt
         $language = $request->get('language', 'lua');
 
         return Response::prompt(sprintf(
-            "Create a new FiveM resource called '%s' with the following requirements:\n\n" .
-            "Framework: %s\n" .
-            "Language: %s\n\n" .
-            "Please:\n" .
-            "1. Generate a complete fxmanifest.lua\n" .
-            "2. Create a config file with common settings\n" .
-            "3. Generate boilerplate client and server files\n" .
-            "4. Include proper error handling and validation\n" .
-            "5. Follow FiveM best practices\n" .
-            "6. Add helpful comments explaining the code structure\n\n" .
-            "Use the available tools to generate the manifest and boilerplate code.",
+            "Create a new FiveM resource called '%s' with the following requirements:\n\n".
+            "Framework: %s\n".
+            "Language: %s\n\n".
+            "Please:\n".
+            "1. Generate a complete fxmanifest.lua\n".
+            "2. Create a config file with common settings\n".
+            "3. Generate boilerplate client and server files\n".
+            "4. Include proper error handling and validation\n".
+            "5. Follow FiveM best practices\n".
+            "6. Add helpful comments explaining the code structure\n\n".
+            'Use the available tools to generate the manifest and boilerplate code.',
             $resourceName,
             $framework,
             $language

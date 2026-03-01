@@ -26,7 +26,7 @@ class SearchFiveMDocs extends Tool
         }
 
         return Response::text(
-            view('mcp.search-results', [
+            view('mcp.shared.search-results', [
                 'query' => $query,
                 'results' => $results,
             ])->render()

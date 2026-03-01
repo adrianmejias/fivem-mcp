@@ -2,7 +2,6 @@
 
 ## {{ $event['name'] }}
 
-**Category:** {{ $event['category'] }}
 **Side:** {{ ucfirst($event['side']) }}
 
 ### Description
@@ -10,8 +9,8 @@
 
 ### Parameters
 @if(count($event['parameters']) > 0)
-@foreach($event['parameters'] as $param)
-- **{{ $param['name'] }}** ({{ $param['type'] }}): {{ $param['description'] }}
+@foreach($event['parameters'] as $name => $description)
+- `{{ $name }}`: {{ $description }}
 @endforeach
 @else
 This event takes no parameters.
