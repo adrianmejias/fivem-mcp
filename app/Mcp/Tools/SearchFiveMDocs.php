@@ -110,6 +110,56 @@ class SearchFiveMDocs extends Tool
                     'keywords' => ['structure', 'folder', 'organization', 'resource', 'files'],
                 ],
             ],
+            'qbcore' => [
+                [
+                    'title' => 'QBCore Documentation',
+                    'url' => 'https://docs.qbcore.org/qbcore-documentation/',
+                    'description' => 'Official QBCore framework documentation and guides',
+                    'keywords' => ['qbcore', 'framework', 'documentation', 'guide'],
+                ],
+                [
+                    'title' => 'QBCore Getting Started',
+                    'url' => 'https://docs.qbcore.org/qbcore-documentation/get-started',
+                    'description' => 'Getting started with QBCore framework setup and basics',
+                    'keywords' => ['qbcore', 'getting started', 'setup', 'installation', 'begin'],
+                ],
+                [
+                    'title' => 'QBCore Callbacks & Exports',
+                    'url' => 'https://docs.qbcore.org/qbcore-documentation/core-concepts/callbacks-exports',
+                    'description' => 'Learn about QBCore callbacks and exports for inter-resource communication',
+                    'keywords' => ['qbcore', 'callback', 'export', 'function', 'communication'],
+                ],
+                [
+                    'title' => 'QBCore Items & Inventory',
+                    'url' => 'https://docs.qbcore.org/qbcore-documentation/core-concepts/items',
+                    'description' => 'Item system and inventory management in QBCore',
+                    'keywords' => ['qbcore', 'items', 'inventory', 'item', 'database'],
+                ],
+                [
+                    'title' => 'QBCore Jobs & Grades',
+                    'url' => 'https://docs.qbcore.org/qbcore-documentation/core-concepts/jobs',
+                    'description' => 'Job system and player grades in QBCore',
+                    'keywords' => ['qbcore', 'job', 'grades', 'employment', 'boss'],
+                ],
+                [
+                    'title' => 'QBCore Player Management',
+                    'url' => 'https://docs.qbcore.org/qbcore-documentation/core-concepts/player',
+                    'description' => 'Managing player data and interactions in QBCore',
+                    'keywords' => ['qbcore', 'player', 'data', 'management', 'character'],
+                ],
+                [
+                    'title' => 'QBCore Vehicles',
+                    'url' => 'https://docs.qbcore.org/qbcore-documentation/core-concepts/vehicles',
+                    'description' => 'Vehicle system and ownership in QBCore',
+                    'keywords' => ['qbcore', 'vehicle', 'car', 'ownership', 'garage'],
+                ],
+                [
+                    'title' => 'QBCore Events',
+                    'url' => 'https://docs.qbcore.org/qbcore-documentation/core-concepts/events',
+                    'description' => 'QBCore framework events for player and game actions',
+                    'keywords' => ['qbcore', 'event', 'trigger', 'listener'],
+                ],
+            ],
         ];
 
         $results = [];
@@ -161,7 +211,7 @@ class SearchFiveMDocs extends Tool
                 ->required(),
             'category' => $schema
                 ->string()
-                ->enum(['all', 'scripting', 'natives', 'networking', 'resources'])
+                ->enum(['all', 'scripting', 'natives', 'networking', 'resources', 'qbcore'])
                 ->description('Filter results by documentation category')
                 ->default('all'),
         ];
