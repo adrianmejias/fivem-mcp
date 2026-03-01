@@ -26,6 +26,8 @@ use App\Mcp\Tools\QBCore\Client\GetQBCoreClientEventReference;
 use App\Mcp\Tools\QBCore\Client\GetQBCoreClientFunction;
 use App\Mcp\Tools\QBCore\GetQBCoreConfig;
 use App\Mcp\Tools\QBCore\GetQBCorePlayers;
+use App\Mcp\Tools\QBCore\GetQBCoreResourceList;
+use App\Mcp\Tools\QBCore\GetQBCoreResourceReference;
 use App\Mcp\Tools\QBCore\GetQBCoreSharedData;
 use App\Mcp\Tools\QBCore\Server\GetQBCoreServerEventReference;
 use App\Mcp\Tools\QBCore\Server\GetQBCoreServerFunction;
@@ -66,6 +68,8 @@ class FiveMServer extends Server
         GetQBCoreSharedData::class,
         GetQBCoreConfig::class,
         GetQBCorePlayers::class,
+        GetQBCoreResourceList::class,
+        GetQBCoreResourceReference::class,
         GetCOXEventReference::class,
         GetCOXFunction::class,
         GetInventoryServerFunction::class,
