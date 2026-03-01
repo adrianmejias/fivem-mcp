@@ -14,7 +14,7 @@ The FiveM MCP Server enables seamless integration with AI coding assistants (Cla
 
 ### Live Site
 
-A live instance is available at: **https://fivem-mcp.kingsoflossantos.com/fivem**
+A live instance is available at: **https://fivem-mcp.kingsoflossantos.com**
 
 This site includes interactive documentation, tool descriptions, and integration guides.
 
@@ -43,6 +43,18 @@ npm run build
 ```
 
 ### Running the Server
+
+**Live AI Assistants (Claude/Client):**
+```json
+{
+  "servers": {
+    "fivem": {
+      "url": "https://fivem-mcp.kingsoflossantos.com/fivem",
+      "type": "http"
+    }
+  }
+}
+```
 
 **Local Testing:**
 ```bash

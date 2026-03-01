@@ -24,6 +24,9 @@ use App\Mcp\Tools\FiveM\Server\GetEventServerReference;
 use App\Mcp\Tools\FiveM\Server\GetNativeServerFunction;
 use App\Mcp\Tools\QBCore\Client\GetQBCoreClientEventReference;
 use App\Mcp\Tools\QBCore\Client\GetQBCoreClientFunction;
+use App\Mcp\Tools\QBCore\GetQBCoreConfig;
+use App\Mcp\Tools\QBCore\GetQBCorePlayers;
+use App\Mcp\Tools\QBCore\GetQBCoreSharedData;
 use App\Mcp\Tools\QBCore\Server\GetQBCoreServerEventReference;
 use App\Mcp\Tools\QBCore\Server\GetQBCoreServerFunction;
 use Laravel\Mcp\Server;
@@ -60,6 +63,9 @@ class FiveMServer extends Server
         GetQBCoreClientFunction::class,
         GetQBCoreServerEventReference::class,
         GetQBCoreClientEventReference::class,
+        GetQBCoreSharedData::class,
+        GetQBCoreConfig::class,
+        GetQBCorePlayers::class,
         GetCOXEventReference::class,
         GetCOXFunction::class,
         GetInventoryServerFunction::class,

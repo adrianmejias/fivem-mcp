@@ -171,11 +171,18 @@
         <h2 class="text-3xl font-extrabold text-gray-900 mb-8">Resources</h2>
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div class="bg-white shadow rounded-lg p-6">
-                <h3 class="text-lg font-medium text-gray-900 mb-4">Testing</h3>
+                <h3 class="text-lg font-medium text-gray-900 mb-4">MCP Server Configuration</h3>
                 <p class="text-sm text-gray-500 mb-4">
-                    Test the MCP server locally using the inspector:
+                    To connect to the FiveM MCP server, use the following configuration in your MCP client:
                 </p>
-                <pre class="bg-gray-50 rounded p-4 text-sm overflow-x-auto"><code>php artisan mcp:inspector fivem</code></pre>
+                <pre class="bg-gray-50 rounded p-4 text-sm overflow-x-auto"><code>{
+  "servers": {
+    "fivem": {
+      "url": "{{ route('fivem') }}",
+      "type": "http"
+    }
+  }
+}</code></pre>
             </div>
             <div class="bg-white shadow rounded-lg p-6">
                 <h3 class="text-lg font-medium text-gray-900 mb-4">External Links</h3>

@@ -178,6 +178,193 @@ class GetQBCoreServerFunction extends Tool
                 'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    Player.Functions.DeleteVehicle('QBTEST')\n    TriggerClientEvent('QBCore:Notify', source, 'Vehicle removed from garage')\nend",
                 'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    Player.Functions.DeleteVehicle('QBTEST');\n    TriggerClientEvent('QBCore:Notify', global.source, 'Vehicle removed from garage');\n}",
             ],
+            'SetGang' => [
+                'namespace' => 'Player',
+                'description' => 'Set a player\'s gang and grade (server-side)',
+                'side' => 'server',
+                'parameters' => [
+                    ['name' => 'gangName', 'type' => 'string', 'description' => 'The gang name'],
+                    ['name' => 'grade', 'type' => 'number', 'description' => 'The gang grade/rank level'],
+                ],
+                'returns' => ['type' => 'boolean', 'description' => 'Success status'],
+                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    Player.Functions.SetGang('lostmc', 1)\n    TriggerClientEvent('QBCore:Notify', source, 'You joined the gang', 'success')\nend",
+                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    Player.Functions.SetGang('lostmc', 1);\n    TriggerClientEvent('QBCore:Notify', global.source, 'You joined the gang', 'success');\n}",
+            ],
+            'Notify' => [
+                'namespace' => 'Player',
+                'description' => 'Send a notification to a player (server-side)',
+                'side' => 'server',
+                'parameters' => [
+                    ['name' => 'text', 'type' => 'string', 'description' => 'Notification text'],
+                    ['name' => 'type', 'type' => 'string', 'description' => 'Notification type: error, success, primary, warning'],
+                    ['name' => 'duration', 'type' => 'number|nil', 'description' => 'Duration in milliseconds (default 5000)'],
+                ],
+                'returns' => ['type' => 'void', 'description' => ''],
+                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    Player.Functions.Notify('Hello!', 'success', 5000)\nend",
+                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    Player.Functions.Notify('Hello!', 'success', 5000);\n}",
+            ],
+            'HasItem' => [
+                'namespace' => 'Player',
+                'description' => 'Check if a player has an item (server-side)',
+                'side' => 'server',
+                'parameters' => [
+                    ['name' => 'item', 'type' => 'string|table', 'description' => 'Item name or array of item names'],
+                    ['name' => 'amount', 'type' => 'number', 'description' => 'Amount required (default 1)'],
+                ],
+                'returns' => ['type' => 'boolean', 'description' => 'True if player has the item(s)'],
+                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    if Player.Functions.HasItem('water_bottle', 1) then\n        print('Player has water')\n    end\nend",
+                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    if (Player.Functions.HasItem('water_bottle', 1)) {\n        console.log('Player has water');\n    }\n}",
+            ],
+            'GetName' => [
+                'namespace' => 'Player',
+                'description' => 'Get a player\'s full character name (server-side)',
+                'side' => 'server',
+                'parameters' => [],
+                'returns' => ['type' => 'string', 'description' => 'Full name (first lastname)'],
+                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    local fullName = Player.Functions.GetName()\n    print('Player name: ' .. fullName)\nend",
+                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    const fullName = Player.Functions.GetName();\n    console.log(`Player name: \${fullName}`);\n}",
+            ],
+            'SetJobDuty' => [
+                'namespace' => 'Player',
+                'description' => 'Set a player on/off duty for their job (server-side)',
+                'side' => 'server',
+                'parameters' => [
+                    ['name' => 'onDuty', 'type' => 'boolean', 'description' => 'True to set on duty, false to set off duty'],
+                ],
+                'returns' => ['type' => 'void', 'description' => ''],
+                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    Player.Functions.SetJobDuty(true)\n    Player.Functions.Notify('You are now on duty', 'success')\nend",
+                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    Player.Functions.SetJobDuty(true);\n    Player.Functions.Notify('You are now on duty', 'success');\n}",
+            ],
+            'SetPlayerData' => [
+                'namespace' => 'Player',
+                'description' => 'Set a player data value by key (server-side)',
+                'side' => 'server',
+                'parameters' => [
+                    ['name' => 'key', 'type' => 'string', 'description' => 'The player data key to set'],
+                    ['name' => 'value', 'type' => 'any', 'description' => 'The value to set'],
+                ],
+                'returns' => ['type' => 'void', 'description' => ''],
+                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    Player.Functions.SetPlayerData('position', vector3(-425.3, 1123.6, 325.0))\nend",
+                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    Player.Functions.SetPlayerData('position', [-425.3, 1123.6, 325.0]);\n}",
+            ],
+            'SetMetaData' => [
+                'namespace' => 'Player',
+                'description' => 'Set a player metadata value by key (server-side)',
+                'side' => 'server',
+                'parameters' => [
+                    ['name' => 'key', 'type' => 'string', 'description' => 'The metadata key to set'],
+                    ['name' => 'value', 'type' => 'any', 'description' => 'The value to set'],
+                ],
+                'returns' => ['type' => 'void', 'description' => ''],
+                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    Player.Functions.SetMetaData('hunger', 80)\n    Player.Functions.SetMetaData('thirst', 70)\nend",
+                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    Player.Functions.SetMetaData('hunger', 80);\n    Player.Functions.SetMetaData('thirst', 70);\n}",
+            ],
+            'GetMetaData' => [
+                'namespace' => 'Player',
+                'description' => 'Get a player metadata value by key (server-side)',
+                'side' => 'server',
+                'parameters' => [
+                    ['name' => 'key', 'type' => 'string', 'description' => 'The metadata key to retrieve'],
+                ],
+                'returns' => ['type' => 'any', 'description' => 'The metadata value'],
+                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    local hunger = Player.Functions.GetMetaData('hunger')\n    print('Hunger Level: ' .. hunger)\nend",
+                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    const hunger = Player.Functions.GetMetaData('hunger');\n    console.log(`Hunger Level: \${hunger}`);\n}",
+            ],
+            'AddRep' => [
+                'namespace' => 'Player',
+                'description' => 'Add reputation points to a player (server-side)',
+                'side' => 'server',
+                'parameters' => [
+                    ['name' => 'repType', 'type' => 'string', 'description' => 'Type of reputation to add (e.g., selling, heist)'],
+                    ['name' => 'amount', 'type' => 'number', 'description' => 'Amount of reputation to add'],
+                ],
+                'returns' => ['type' => 'void', 'description' => ''],
+                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    Player.Functions.AddRep('selling', 10)\nend",
+                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    Player.Functions.AddRep('selling', 10);\n}",
+            ],
+            'RemoveRep' => [
+                'namespace' => 'Player',
+                'description' => 'Remove reputation points from a player (server-side)',
+                'side' => 'server',
+                'parameters' => [
+                    ['name' => 'repType', 'type' => 'string', 'description' => 'Type of reputation to remove'],
+                    ['name' => 'amount', 'type' => 'number', 'description' => 'Amount of reputation to remove'],
+                ],
+                'returns' => ['type' => 'void', 'description' => ''],
+                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    Player.Functions.RemoveRep('selling', 5)\nend",
+                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    Player.Functions.RemoveRep('selling', 5);\n}",
+            ],
+            'GetRep' => [
+                'namespace' => 'Player',
+                'description' => 'Get a player\'s reputation value (server-side)',
+                'side' => 'server',
+                'parameters' => [
+                    ['name' => 'repType', 'type' => 'string', 'description' => 'Type of reputation to retrieve'],
+                ],
+                'returns' => ['type' => 'number', 'description' => 'Reputation value'],
+                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    local sellingRep = Player.Functions.GetRep('selling')\n    print('Selling Rep: ' .. sellingRep)\nend",
+                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    const sellingRep = Player.Functions.GetRep('selling');\n    console.log(`Selling Rep: \${sellingRep}`);\n}",
+            ],
+            'SetMoney' => [
+                'namespace' => 'Player',
+                'description' => 'Set a player\'s money to a specific amount (server-side)',
+                'side' => 'server',
+                'parameters' => [
+                    ['name' => 'moneyType', 'type' => 'string', 'description' => 'Type: "cash", "bank", or custom'],
+                    ['name' => 'amount', 'type' => 'number', 'description' => 'Amount to set'],
+                    ['name' => 'reason', 'type' => 'string|nil', 'description' => 'Optional reason for logging'],
+                ],
+                'returns' => ['type' => 'boolean', 'description' => 'Success status'],
+                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    Player.Functions.SetMoney('cash', 5000, 'Admin Command')\n    Player.Functions.Notify('Your cash has been set', 'info')\nend",
+                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    Player.Functions.SetMoney('cash', 5000, 'Admin Command');\n    Player.Functions.Notify('Your cash has been set', 'info');\n}",
+            ],
+            'Save' => [
+                'namespace' => 'Player',
+                'description' => 'Save a player\'s data to the database (server-side)',
+                'side' => 'server',
+                'parameters' => [],
+                'returns' => ['type' => 'void', 'description' => ''],
+                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    Player.Functions.Save()\nend",
+                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    Player.Functions.Save();\n}",
+            ],
+            'Logout' => [
+                'namespace' => 'Player',
+                'description' => 'Force a player to logout to the character selection (server-side)',
+                'side' => 'server',
+                'parameters' => [],
+                'returns' => ['type' => 'void', 'description' => ''],
+                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    Player.Functions.Logout()\nend",
+                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    Player.Functions.Logout();\n}",
+            ],
+            'UpdatePlayerData' => [
+                'namespace' => 'Player',
+                'description' => 'Update the player data on client and server (server-side)',
+                'side' => 'server',
+                'parameters' => [],
+                'returns' => ['type' => 'void', 'description' => ''],
+                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    Player.Functions.UpdatePlayerData()\nend",
+                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    Player.Functions.UpdatePlayerData();\n}",
+            ],
+            'GetPlayerBophone' => [
+                'namespace' => 'Core',
+                'description' => 'Get a player by their phone number (server-side only)',
+                'side' => 'server',
+                'parameters' => [
+                    ['name' => 'phoneNumber', 'type' => 'string', 'description' => 'The phone number to search for'],
+                ],
+                'returns' => ['type' => 'table', 'description' => 'QBCore player object or nil'],
+                'lua_example' => "local Player = QBCore.Functions.GetPlayerByPhone('555-0001')\nif Player then\n    print('Found player: ' .. Player.Functions.GetName())\nend",
+                'js_example' => "const Player = QBCore.Functions.GetPlayerByPhone('555-0001');\nif (Player) {\n    console.log(`Found player: \${Player.Functions.GetName()}`);\n}",
+            ],
+            'GetPlayers' => [
+                'namespace' => 'Core',
+                'description' => 'Get table of all online player net IDs (server-side only)',
+                'side' => 'server',
+                'parameters' => [],
+                'returns' => ['type' => 'table', 'description' => 'Array of all connected player net IDs'],
+                'lua_example' => "local players = QBCore.Functions.GetPlayers()\nfor i = 1, #players do\n    local Player = QBCore.Functions.GetPlayer(players[i])\n    if Player then\n        print('Player: ' .. Player.Functions.GetName())\n    end\nend",
+                'js_example' => "const players = QBCore.Functions.GetPlayers();\nfor (const playerId of players) {\n    const Player = QBCore.Functions.GetPlayer(playerId);\n    if (Player) {\n        console.log(`Player: \${Player.Functions.GetName()}`);\n    }\n}",
+            ],
         ];
 
         $nameLower = strtolower($name);
@@ -212,7 +399,7 @@ class GetQBCoreServerFunction extends Tool
         return [
             'function_name' => $schema
                 ->string()
-                ->description('The name of the QBCore server function to look up (e.g., "QBCore.Functions.GetPlayer", "AddMoney", "SetJob")')
+                ->description('The name of the QBCore server function to look up (e.g., "QBCore.Functions.GetPlayer", "AddMoney", "SetJob", "SetGang", "Notify", "HasItem", "SetMetaData", "GetRep")')
                 ->required(),
             'language' => $schema
                 ->string()

@@ -113,6 +113,101 @@ class GetQBCoreClientFunction extends Tool
                 'lua_example' => "RegisterNetEvent('QBCore:Client:OnPlayerLoad')\nAddEventHandler('QBCore:Client:OnPlayerLoad', function()\n    local playerData = QBCore.Functions.GetPlayerData()\n    print('Player loaded: ' .. playerData.charinfo.firstname)\nend)",
                 'js_example' => "RegisterNetEvent('QBCore:Client:OnPlayerLoad');\nAddEventHandler('QBCore:Client:OnPlayerLoad', function() {\n    const playerData = QBCore.Functions.GetPlayerData();\n    console.log(`Player loaded: \${playerData.charinfo.firstname}`);\n});",
             ],
+            'TriggerServerEvent' => [
+                'namespace' => 'FiveM Core',
+                'description' => 'Trigger a server-side event from the client (client-side only)',
+                'side' => 'client',
+                'parameters' => [
+                    ['name' => 'eventName', 'type' => 'string', 'description' => 'Event name to trigger on server'],
+                    ['name' => '...', 'type' => 'any', 'description' => 'Arguments to pass to server event'],
+                ],
+                'returns' => ['type' => 'void', 'description' => ''],
+                'lua_example' => "TriggerServerEvent('myResource:serverEvent', 'arg1', 'arg2')\n-- Received on server with:\n-- RegisterNetEvent('myResource:serverEvent')\n-- AddEventHandler('myResource:serverEvent', function(arg1, arg2) end)",
+                'js_example' => "TriggerServerEvent('myResource:serverEvent', 'arg1', 'arg2');\n// Received on server with:\n// on('myResource:serverEvent', (arg1, arg2) => {})",
+            ],
+            'Citizen.Wait' => [
+                'namespace' => 'FiveM Core',
+                'description' => 'Wait/sleep for a specified duration in milliseconds (client-side)',
+                'side' => 'client',
+                'parameters' => [
+                    ['name' => 'ms', 'type' => 'number', 'description' => 'Duration in milliseconds'],
+                ],
+                'returns' => ['type' => 'void', 'description' => ''],
+                'lua_example' => "print('Before wait')\nCitizen.Wait(5000)  -- Wait 5 seconds\nprint('After wait')",
+                'js_example' => "console.log('Before wait');\nawait Citizen.Wait(5000);  // Wait 5 seconds\nconsole.log('After wait');",
+            ],
+            'Citizen.CreateThread' => [
+                'namespace' => 'FiveM Core',
+                'description' => 'Create an async thread (client-side)',
+                'side' => 'client',
+                'parameters' => [
+                    ['name' => 'callback', 'type' => 'function', 'description' => 'Function to execute as thread'],
+                ],
+                'returns' => ['type' => 'number', 'description' => 'Thread ID'],
+                'lua_example' => "Citizen.CreateThread(function()\n    while true do\n        Citizen.Wait(1000)  -- Repeat every second\n        print('This runs repeatedly')\n    end\nend)",
+                'js_example' => "Citizen.CreateThread(async () => {\n    while (true) {\n        await Citizen.Wait(1000);  // Repeat every second\n        console.log('This runs repeatedly');\n    }\n});",
+            ],
+            'PlayerPedId' => [
+                'namespace' => 'FiveM Core',
+                'description' => 'Get the local player ped entity (client-side only)',
+                'side' => 'client',
+                'parameters' => [],
+                'returns' => ['type' => 'number', 'description' => 'Player ped entity ID'],
+                'lua_example' => "local playerPed = PlayerPedId()\nprint('My ped ID: ' .. playerPed)",
+                'js_example' => "const playerPed = PlayerPedId();\nconsole.log(`My ped ID: \${playerPed}`);",
+            ],
+            'GetEntityCoords' => [
+                'namespace' => 'FiveM Core',
+                'description' => 'Get the coordinates of an entity (client-side)',
+                'side' => 'client',
+                'parameters' => [
+                    ['name' => 'entity', 'type' => 'number', 'description' => 'Entity ID'],
+                    ['name' => 'alive', 'type' => 'boolean|nil', 'description' => 'Whether to get alive coords (default true)'],
+                ],
+                'returns' => ['type' => 'vector3', 'description' => 'X, Y, Z coordinates'],
+                'lua_example' => "local playerPed = PlayerPedId()\nlocal playerCoords = GetEntityCoords(playerPed)\nprint('Player at: ' .. playerCoords.x .. ', ' .. playerCoords.y .. ', ' .. playerCoords.z)",
+                'js_example' => "const playerPed = PlayerPedId();\nconst playerCoords = GetEntityCoords(playerPed);\nconsole.log(`Player at: \${playerCoords.x}, \${playerCoords.y}, \${playerCoords.z}`);",
+            ],
+            'SetEntityCoords' => [
+                'namespace' => 'FiveM Core',
+                'description' => 'Set the coordinates of an entity (client-side)',
+                'side' => 'client',
+                'parameters' => [
+                    ['name' => 'entity', 'type' => 'number', 'description' => 'Entity ID'],
+                    ['name' => 'x', 'type' => 'number', 'description' => 'X coordinate'],
+                    ['name' => 'y', 'type' => 'number', 'description' => 'Y coordinate'],
+                    ['name' => 'z', 'type' => 'number', 'description' => 'Z coordinate'],
+                    ['name' => 'alive', 'type' => 'boolean|nil', 'description' => 'Whether alive (default true)'],
+                    ['name' => 'animate', 'type' => 'boolean|nil', 'description' => 'Whether to animate movement (default false)'],
+                ],
+                'returns' => ['type' => 'void', 'description' => ''],
+                'lua_example' => "local playerPed = PlayerPedId()\nSetEntityCoords(playerPed, 100.0, 200.0, 50.0, false, false, false, false)\nprint('Teleported!')",
+                'js_example' => "const playerPed = PlayerPedId();\nSetEntityCoords(playerPed, 100.0, 200.0, 50.0, false, false, false, false);\nconsole.log('Teleported!');",
+            ],
+            'QBCore.Functions.Notify' => [
+                'namespace' => 'UI',
+                'description' => 'Send a notification to the local player on client (client-side only)',
+                'side' => 'client',
+                'parameters' => [
+                    ['name' => 'text', 'type' => 'string', 'description' => 'Notification text'],
+                    ['name' => 'type', 'type' => 'string', 'description' => 'Notification type: error, success, primary, warning'],
+                    ['name' => 'duration', 'type' => 'number|nil', 'description' => 'Duration in milliseconds (default 5000)'],
+                ],
+                'returns' => ['type' => 'void', 'description' => ''],
+                'lua_example' => "QBCore.Functions.Notify('Welcome to the server!', 'success', 5000)",
+                'js_example' => "QBCore.Functions.Notify('Welcome to the server!', 'success', 5000);",
+            ],
+            'QBCore.Functions.GetResourceMeta' => [
+                'namespace' => 'Core',
+                'description' => 'Get a resource metadata value (client-side)',
+                'side' => 'client',
+                'parameters' => [
+                    ['name' => 'key', 'type' => 'string', 'description' => 'Metadata key to retrieve'],
+                ],
+                'returns' => ['type' => 'any', 'description' => 'The metadata value or nil'],
+                'lua_example' => "local version = QBCore.Functions.GetResourceMeta('version')\nif version then\n    print('QBCore Version: ' .. version)\nend",
+                'js_example' => "const version = QBCore.Functions.GetResourceMeta('version');\nif (version) {\n    console.log(`QBCore Version: \${version}`);\n}",
+            ],
         ];
 
         $nameLower = strtolower($name);
@@ -147,7 +242,7 @@ class GetQBCoreClientFunction extends Tool
         return [
             'function_name' => $schema
                 ->string()
-                ->description('The name of the QBCore client function to look up (e.g., "QBCore.Functions.GetPlayerData", "QBCore.Commands.Add")')
+                ->description('The name of the QBCore client function to look up (e.g., "QBCore.Functions.GetPlayerData", "QBCore.Commands.Add", "TriggerServerEvent", "Citizen.Wait", "PlayerPedId")')
                 ->required(),
             'language' => $schema
                 ->string()
