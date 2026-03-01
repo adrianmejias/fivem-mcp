@@ -1,6 +1,6 @@
 <?php
 
-use App\Mcp\Tools\GetCOXFunction;
+use App\Mcp\Tools\COX\MySQL\GetCOXFunction;
 use Laravel\Mcp\Request;
 
 it('get cox function returns response with content', function () {
@@ -45,7 +45,7 @@ it('get cox function supports javascript examples', function () {
 
 it('get cox function works with transaction methods', function () {
     $tool = new GetCOXFunction;
-    $request = new Request(['function_name' => 'MySQL.transaction.begin']);
+    $request = new Request(['function_name' => 'MySQL.transaction']);
 
     $response = $tool->handle($request);
 

@@ -1,10 +1,10 @@
 <?php
 
-use App\Mcp\Tools\GenerateManifest;
+use App\Mcp\Tools\FiveM\GenerateManifest;
 use Laravel\Mcp\Request;
 
 it('generate manifest returns response with content', function () {
-    $tool = new GenerateManifest();
+    $tool = new GenerateManifest;
     $request = new Request(['resource_name' => 'test-resource']);
 
     $response = $tool->handle($request);
@@ -14,7 +14,7 @@ it('generate manifest returns response with content', function () {
 });
 
 it('generate manifest includes required fields', function () {
-    $tool = new GenerateManifest();
+    $tool = new GenerateManifest;
     $request = new Request(['resource_name' => 'my-test-resource']);
 
     $response = $tool->handle($request);

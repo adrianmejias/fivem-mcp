@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mcp\Tools;
+namespace App\Mcp\Tools\FiveM\Server;
 
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Laravel\Mcp\Request;
@@ -8,8 +8,8 @@ use Laravel\Mcp\Response;
 use Laravel\Mcp\Server\Attributes\Description;
 use Laravel\Mcp\Server\Tool;
 
-#[Description('Get information about FiveM events including built-in and common framework events (ESX, QBCore).')]
-class GetEventReference extends Tool
+#[Description('Get information about FiveM server-side events including framework events (ESX, QBCore).')]
+class GetEventServerReference extends Tool
 {
     /**
      * Handle the tool request.
@@ -40,7 +40,7 @@ class GetEventReference extends Tool
             }
         }
 
-        return Response::text(sprintf("Event '%s' not found in the database.", $eventName));
+        return Response::text(sprintf("Server event '%s' not found in the database.", $eventName));
     }
 
     /**
@@ -78,34 +78,34 @@ class GetEventReference extends Tool
     }
 
     /**
-     * Get events database.
+     * Get server events database.
      */
     protected function getEventsDatabase(): array
     {
         return [
-            // Core FiveM Events
+            // Core FiveM Server Events
             [
                 'name' => 'onResourceStart',
                 'type' => 'core',
-                'side' => 'both',
-                'description' => 'Triggered when a resource starts',
+                'side' => 'server',
+                'description' => 'Triggered when a resource starts (server-side)',
                 'parameters' => [
                     ['name' => 'resourceName', 'type' => 'string', 'description' => 'The name of the resource that started'],
                 ],
-                'lua_example' => "AddEventHandler('onResourceStart', function(resourceName)\n    if resourceName == GetCurrentResourceName() then\n        print('Resource started!')\n    end\nend)",
-                'js_example' => "on('onResourceStart', (resourceName) => {\n    if (resourceName === GetCurrentResourceName()) {\n        console.log('Resource started!');\n    }\n});",
+                'lua_example' => "AddEventHandler('onResourceStart', function(resourceName)\n    if resourceName == GetCurrentResourceName() then\n        print('Resource started on server!')\n    end\nend)",
+                'js_example' => "on('onResourceStart', (resourceName) => {\n    if (resourceName === GetCurrentResourceName()) {\n        console.log('Resource started on server!');\n    }\n});",
                 'documentation' => 'https://docs.fivem.net/docs/scripting-reference/events/list/onResourceStart/',
             ],
             [
                 'name' => 'onResourceStop',
                 'type' => 'core',
-                'side' => 'both',
-                'description' => 'Triggered when a resource stops',
+                'side' => 'server',
+                'description' => 'Triggered when a resource stops (server-side)',
                 'parameters' => [
                     ['name' => 'resourceName', 'type' => 'string', 'description' => 'The name of the resource that stopped'],
                 ],
-                'lua_example' => "AddEventHandler('onResourceStop', function(resourceName)\n    if resourceName == GetCurrentResourceName() then\n        print('Resource stopping!')\n    end\nend)",
-                'js_example' => "on('onResourceStop', (resourceName) => {\n    if (resourceName === GetCurrentResourceName()) {\n        console.log('Resource stopping!');\n    }\n});",
+                'lua_example' => "AddEventHandler('onResourceStop', function(resourceName)\n    if resourceName == GetCurrentResourceName() then\n        print('Resource stopped on server!')\n    end\nend)",
+                'js_example' => "on('onResourceStop', (resourceName) => {\n    if (resourceName === GetCurrentResourceName()) {\n        console.log('Resource stopped on server!');\n    }\n});",
                 'documentation' => 'https://docs.fivem.net/docs/scripting-reference/events/list/onResourceStop/',
             ],
             [
@@ -134,49 +134,29 @@ class GetEventReference extends Tool
                 'js_example' => "on('playerDropped', (reason) => {\n    const source = global.source;\n    console.log(`Player \${GetPlayerName(source)} dropped: \${reason}`);\n});",
                 'documentation' => 'https://docs.fivem.net/docs/scripting-reference/events/list/playerDropped/',
             ],
-            // ESX Events
+            // ESX Server Events
             [
                 'name' => 'esx:playerLoaded',
                 'type' => 'esx',
-                'side' => 'client',
-                'description' => 'Triggered when ESX player data is loaded on client',
+                'side' => 'server',
+                'description' => 'Triggered on server when ESX player loads',
                 'parameters' => [
                     ['name' => 'xPlayer', 'type' => 'table', 'description' => 'ESX player object'],
                 ],
-                'lua_example' => "RegisterNetEvent('esx:playerLoaded', function(xPlayer)\n    ESX.PlayerData = xPlayer\n    -- Player is loaded\nend)",
-                'js_example' => "RegisterNetEvent('esx:playerLoaded', (xPlayer) => {\n    ESX.PlayerData = xPlayer;\n    // Player is loaded\n});",
+                'lua_example' => "AddEventHandler('esx:playerLoaded', function(source, xPlayer)\n    -- Server-side player loaded\nend)",
+                'js_example' => "on('esx:playerLoaded', (source, xPlayer) => {\n    // Server-side player loaded\n});",
             ],
+            // QBCore Server Events
             [
-                'name' => 'esx:setJob',
-                'type' => 'esx',
-                'side' => 'client',
-                'description' => 'Triggered when player job changes',
-                'parameters' => [
-                    ['name' => 'job', 'type' => 'table', 'description' => 'New job object'],
-                ],
-                'lua_example' => "RegisterNetEvent('esx:setJob', function(job)\n    ESX.PlayerData.job = job\n    print('Job changed to: ' .. job.name)\nend)",
-                'js_example' => "RegisterNetEvent('esx:setJob', (job) => {\n    ESX.PlayerData.job = job;\n    console.log(`Job changed to: \${job.name}`);\n});",
-            ],
-            // QBCore Events
-            [
-                'name' => 'QBCore:Client:OnPlayerLoaded',
+                'name' => 'QBCore:Server:PlayerLoaded',
                 'type' => 'qbcore',
-                'side' => 'client',
-                'description' => 'Triggered when QBCore player data is loaded on client',
-                'parameters' => [],
-                'lua_example' => "RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()\n    local PlayerData = QBCore.Functions.GetPlayerData()\n    -- Player is loaded\nend)",
-                'js_example' => "RegisterNetEvent('QBCore:Client:OnPlayerLoaded', () => {\n    const PlayerData = QBCore.Functions.GetPlayerData();\n    // Player is loaded\n});",
-            ],
-            [
-                'name' => 'QBCore:Client:OnJobUpdate',
-                'type' => 'qbcore',
-                'side' => 'client',
-                'description' => 'Triggered when player job changes in QBCore',
+                'side' => 'server',
+                'description' => 'Triggered on server when QBCore player loads',
                 'parameters' => [
-                    ['name' => 'job', 'type' => 'table', 'description' => 'New job object'],
+                    ['name' => 'Player', 'type' => 'table', 'description' => 'QBCore player object'],
                 ],
-                'lua_example' => "RegisterNetEvent('QBCore:Client:OnJobUpdate', function(job)\n    PlayerData.job = job\n    print('Job changed to: ' .. job.name)\nend)",
-                'js_example' => "RegisterNetEvent('QBCore:Client:OnJobUpdate', (job) => {\n    PlayerData.job = job;\n    console.log(`Job changed to: \${job.name}`);\n});",
+                'lua_example' => "AddEventHandler('QBCore:Server:PlayerLoaded', function(Player)\n    -- Server-side player loaded\nend)",
+                'js_example' => "on('QBCore:Server:PlayerLoaded', (Player) => {\n    // Server-side player loaded\n});",
             ],
         ];
     }
@@ -191,7 +171,7 @@ class GetEventReference extends Tool
         return [
             'event_name' => $schema
                 ->string()
-                ->description('Specific event name to look up (optional, leave empty to list all events)'),
+                ->description('Specific server event name to look up (optional, leave empty to list all events)'),
             'event_type' => $schema
                 ->string()
                 ->enum(['all', 'core', 'esx', 'qbcore'])

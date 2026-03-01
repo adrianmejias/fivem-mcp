@@ -11,15 +11,21 @@ use App\Mcp\Resources\BestPractices;
 use App\Mcp\Resources\CodeSnippets;
 use App\Mcp\Resources\DatabaseQueries;
 use App\Mcp\Resources\FrameworkComparison;
-use App\Mcp\Tools\GenerateManifest;
-use App\Mcp\Tools\GenerateResourceBoilerplate;
-use App\Mcp\Tools\GetCOXEventReference;
-use App\Mcp\Tools\GetCOXFunction;
-use App\Mcp\Tools\GetEventReference;
-use App\Mcp\Tools\GetNativeFunction;
-use App\Mcp\Tools\GetQBCoreEventReference;
-use App\Mcp\Tools\GetQBCoreFunction;
-use App\Mcp\Tools\SearchFiveMDocs;
+use App\Mcp\Tools\COX\Inventory\Client\GetInventoryClientFunction;
+use App\Mcp\Tools\COX\Inventory\Server\GetInventoryServerFunction;
+use App\Mcp\Tools\COX\MySQL\GetCOXEventReference;
+use App\Mcp\Tools\COX\MySQL\GetCOXFunction;
+use App\Mcp\Tools\FiveM\Client\GetEventClientReference;
+use App\Mcp\Tools\FiveM\Client\GetNativeClientFunction;
+use App\Mcp\Tools\FiveM\GenerateManifest;
+use App\Mcp\Tools\FiveM\GenerateResourceBoilerplate;
+use App\Mcp\Tools\FiveM\SearchFiveMDocs;
+use App\Mcp\Tools\FiveM\Server\GetEventServerReference;
+use App\Mcp\Tools\FiveM\Server\GetNativeServerFunction;
+use App\Mcp\Tools\QBCore\Client\GetQBCoreClientEventReference;
+use App\Mcp\Tools\QBCore\Client\GetQBCoreClientFunction;
+use App\Mcp\Tools\QBCore\Server\GetQBCoreServerEventReference;
+use App\Mcp\Tools\QBCore\Server\GetQBCoreServerFunction;
 use Laravel\Mcp\Server;
 use Laravel\Mcp\Server\Attributes\Instructions;
 use Laravel\Mcp\Server\Attributes\Name;
@@ -44,14 +50,20 @@ class FiveMServer extends Server
 {
     protected array $tools = [
         SearchFiveMDocs::class,
-        GetNativeFunction::class,
         GenerateManifest::class,
-        GetEventReference::class,
         GenerateResourceBoilerplate::class,
-        GetQBCoreEventReference::class,
-        GetQBCoreFunction::class,
+        GetNativeClientFunction::class,
+        GetNativeServerFunction::class,
+        GetEventClientReference::class,
+        GetEventServerReference::class,
+        GetQBCoreServerFunction::class,
+        GetQBCoreClientFunction::class,
+        GetQBCoreServerEventReference::class,
+        GetQBCoreClientEventReference::class,
         GetCOXEventReference::class,
         GetCOXFunction::class,
+        GetInventoryServerFunction::class,
+        GetInventoryClientFunction::class,
     ];
 
     protected array $resources = [

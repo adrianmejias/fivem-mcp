@@ -1,10 +1,10 @@
 <?php
 
-use App\Mcp\Tools\GenerateResourceBoilerplate;
+use App\Mcp\Tools\FiveM\GenerateResourceBoilerplate;
 use Laravel\Mcp\Request;
 
 it('generate resource boilerplate returns response with content', function () {
-    $tool = new GenerateResourceBoilerplate();
+    $tool = new GenerateResourceBoilerplate;
     $request = new Request(['resource_name' => 'test-resource']);
 
     $response = $tool->handle($request);
@@ -14,7 +14,7 @@ it('generate resource boilerplate returns response with content', function () {
 });
 
 it('generate resource boilerplate includes resource name', function () {
-    $tool = new GenerateResourceBoilerplate();
+    $tool = new GenerateResourceBoilerplate;
     $request = new Request(['resource_name' => 'my-boilerplate']);
 
     $response = $tool->handle($request);

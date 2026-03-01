@@ -187,6 +187,12 @@
                         <a href="https://docs.fivem.net/natives/" class="text-indigo-600 hover:text-indigo-500">FiveM Natives Reference</a>
                     </li>
                     <li>
+                        <a href="https://docs.qbcore.org/" class="text-indigo-600 hover:text-indigo-500">QBCore Documentation</a>
+                    </li>
+                    <li>
+                        <a href="https://coxdocs.dev/" class="text-indigo-600 hover:text-indigo-500">COX MySQL Documentation</a>
+                    </li>
+                    <li>
                         <a href="https://laravel.com/docs/mcp" class="text-indigo-600 hover:text-indigo-500">Laravel MCP Documentation</a>
                     </li>
                     <li>

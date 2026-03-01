@@ -1,10 +1,10 @@
 <?php
 
-use App\Mcp\Tools\SearchFiveMDocs;
+use App\Mcp\Tools\FiveM\SearchFiveMDocs;
 use Laravel\Mcp\Request;
 
 it('search fivem docs returns response with content', function () {
-    $tool = new SearchFiveMDocs();
+    $tool = new SearchFiveMDocs;
     $request = new Request(['query' => 'networking']);
 
     $response = $tool->handle($request);
@@ -14,7 +14,7 @@ it('search fivem docs returns response with content', function () {
 });
 
 it('search fivem docs handles empty results', function () {
-    $tool = new SearchFiveMDocs();
+    $tool = new SearchFiveMDocs;
     $request = new Request(['query' => 'nonexistent_topic_xyz']);
 
     $response = $tool->handle($request);

@@ -1,6 +1,6 @@
 <?php
 
-use App\Mcp\Tools\GetCOXEventReference;
+use App\Mcp\Tools\COX\MySQL\GetCOXEventReference;
 use Laravel\Mcp\Request;
 
 it('get cox event reference returns response with content', function () {

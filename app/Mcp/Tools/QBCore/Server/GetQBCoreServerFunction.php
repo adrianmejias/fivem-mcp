@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mcp\Tools;
+namespace App\Mcp\Tools\QBCore\Server;
 
 use Illuminate\Contracts\JsonSchema\JsonSchema;
 use Laravel\Mcp\Request;
@@ -8,8 +8,8 @@ use Laravel\Mcp\Response;
 use Laravel\Mcp\Server\Attributes\Description;
 use Laravel\Mcp\Server\Tool;
 
-#[Description('Look up QBCore functions and exports by name. Returns function signature, parameters, return type, and usage examples.')]
-class GetQBCoreFunction extends Tool
+#[Description('Look up QBCore server-side functions and exports by name. Returns function signature, parameters, return type, and usage examples.')]
+class GetQBCoreServerFunction extends Tool
 {
     /**
      * Handle the tool request.
@@ -22,7 +22,7 @@ class GetQBCoreFunction extends Tool
         $function = $this->findFunction($functionName);
 
         if (! $function) {
-            return Response::text(sprintf("QBCore function '%s' not found. Check QBCore documentation at https://docs.qbcore.org/", $functionName));
+            return Response::text(sprintf("QBCore server function '%s' not found. Check QBCore documentation at https://docs.qbcore.org/", $functionName));
         }
 
         $output = $this->formatFunctionInfo($function, $language);
@@ -31,12 +31,11 @@ class GetQBCoreFunction extends Tool
     }
 
     /**
-     * Find a QBCore function.
+     * Find a QBCore server function.
      */
     protected function findFunction(string $name): ?array
     {
         $functions = [
-            // Player Functions
             'QBCore.Functions.GetPlayer' => [
                 'namespace' => 'Core',
                 'description' => 'Get a QBCore player object from server ID (server-side only)',
@@ -59,20 +58,9 @@ class GetQBCoreFunction extends Tool
                 'lua_example' => "local Player = QBCore.Functions.GetPlayerByCitizenId('ABC12345')\nif Player then\n    TriggerClientEvent('QBCore:Notify', Player.PlayerData.source, 'Hello!')\nend",
                 'js_example' => "const Player = QBCore.Functions.GetPlayerByCitizenId('ABC12345');\nif (Player) {\n    TriggerClientEvent('QBCore:Notify', Player.PlayerData.source, 'Hello!');\n}",
             ],
-            'QBCore.Functions.GetPlayerData' => [
-                'namespace' => 'Core',
-                'description' => 'Get the current player data (client-side only)',
-                'side' => 'client',
-                'parameters' => [],
-                'returns' => ['type' => 'table', 'description' => 'Current player data table'],
-                'lua_example' => "local PlayerData = QBCore.Functions.GetPlayerData()\nprint('Job: ' .. PlayerData.job.name)",
-                'js_example' => "const PlayerData = QBCore.Functions.GetPlayerData();\nconsole.log('Job: ' + PlayerData.job.name);",
-            ],
-
-            // Item Functions
             'AddItem' => [
                 'namespace' => 'Player',
-                'description' => 'Add an item to a player\'s inventory',
+                'description' => 'Add an item to a player\'s inventory (server-side)',
                 'side' => 'server',
                 'parameters' => [
                     ['name' => 'item', 'type' => 'string', 'description' => 'Item name'],
@@ -86,7 +74,7 @@ class GetQBCoreFunction extends Tool
             ],
             'RemoveItem' => [
                 'namespace' => 'Player',
-                'description' => 'Remove an item from a player\'s inventory',
+                'description' => 'Remove an item from a player\'s inventory (server-side)',
                 'side' => 'server',
                 'parameters' => [
                     ['name' => 'item', 'type' => 'string', 'description' => 'Item name'],
@@ -99,7 +87,7 @@ class GetQBCoreFunction extends Tool
             ],
             'GetItemByName' => [
                 'namespace' => 'Player',
-                'description' => 'Get item data from a player\'s inventory',
+                'description' => 'Get item data from a player\'s inventory (server-side)',
                 'side' => 'server',
                 'parameters' => [
                     ['name' => 'item', 'type' => 'string', 'description' => 'Item name to search for'],
@@ -108,11 +96,9 @@ class GetQBCoreFunction extends Tool
                 'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    local item = Player.Functions.GetItemByName('water')\n    if item then\n        print('Found ' .. item.amount .. 'x ' .. item.name)\n    end\nend",
                 'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    const item = Player.Functions.GetItemByName('water');\n    if (item) {\n        console.log(`Found \${item.amount}x \${item.name}`);\n    }\n}",
             ],
-
-            // Money Functions
             'AddMoney' => [
                 'namespace' => 'Player',
-                'description' => 'Add money to a player\'s account',
+                'description' => 'Add money to a player\'s account (server-side)',
                 'side' => 'server',
                 'parameters' => [
                     ['name' => 'moneyType', 'type' => 'string', 'description' => 'Type: "cash", "bank", or custom'],
@@ -120,12 +106,12 @@ class GetQBCoreFunction extends Tool
                     ['name' => 'reason', 'type' => 'string|nil', 'description' => 'Optional reason for logging'],
                 ],
                 'returns' => ['type' => 'boolean', 'description' => 'Success status'],
-                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    Player.Functions.AddMoney('cash', 500, 'Job Payment')\n    TriggerClientEvent('QBCore:Notify', source, 'You earned $500')\nend",
-                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    Player.Functions.AddMoney('cash', 500, 'Job Payment');\n    TriggerClientEvent('QBCore:Notify', global.source, 'You earned $500');\n}",
+                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    Player.Functions.AddMoney('cash', 500, 'Job Payment')\n    TriggerClientEvent('QBCore:Notify', source, 'You earned \$500')\nend",
+                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    Player.Functions.AddMoney('cash', 500, 'Job Payment');\n    TriggerClientEvent('QBCore:Notify', global.source, 'You earned \$500');\n}",
             ],
             'RemoveMoney' => [
                 'namespace' => 'Player',
-                'description' => 'Remove money from a player\'s account',
+                'description' => 'Remove money from a player\'s account (server-side)',
                 'side' => 'server',
                 'parameters' => [
                     ['name' => 'moneyType', 'type' => 'string', 'description' => 'Type: "cash", "bank", or custom'],
@@ -138,20 +124,18 @@ class GetQBCoreFunction extends Tool
             ],
             'GetMoney' => [
                 'namespace' => 'Player',
-                'description' => 'Get a player\'s money amount',
+                'description' => 'Get a player\'s money amount (server-side)',
                 'side' => 'server',
                 'parameters' => [
                     ['name' => 'moneyType', 'type' => 'string', 'description' => 'Type: "cash", "bank", or custom'],
                 ],
                 'returns' => ['type' => 'int', 'description' => 'Money amount'],
-                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    local cashAmount = Player.Functions.GetMoney('cash')\n    print('Cash: $' .. cashAmount)\nend",
-                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    const cashAmount = Player.Functions.GetMoney('cash');\n    console.log('Cash: $' + cashAmount);\n}",
+                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    local cashAmount = Player.Functions.GetMoney('cash')\n    print('Cash: \$' .. cashAmount)\nend",
+                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    const cashAmount = Player.Functions.GetMoney('cash');\n    console.log('Cash: \$' + cashAmount);\n}",
             ],
-
-            // Job Functions
             'SetJob' => [
                 'namespace' => 'Player',
-                'description' => 'Set a player\'s job',
+                'description' => 'Set a player\'s job (server-side)',
                 'side' => 'server',
                 'parameters' => [
                     ['name' => 'jobName', 'type' => 'string', 'description' => 'The job name'],
@@ -163,18 +147,16 @@ class GetQBCoreFunction extends Tool
             ],
             'GetJob' => [
                 'namespace' => 'Player',
-                'description' => 'Get a player\'s job information',
+                'description' => 'Get a player\'s job information (server-side)',
                 'side' => 'server',
                 'parameters' => [],
                 'returns' => ['type' => 'table', 'description' => 'Job data table with name, label, grade, etc.'],
                 'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    local job = Player.Functions.GetJob()\n    print('Job: ' .. job.name .. ' (' .. job.grade.name .. ')')\nend",
                 'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    const job = Player.Functions.GetJob();\n    console.log(`Job: \${job.name} (\${job.grade.name})`);\n}",
             ],
-
-            // Vehicle Functions
             'AddVehicle' => [
                 'namespace' => 'Player',
-                'description' => 'Add a vehicle to a player\'s garage',
+                'description' => 'Add a vehicle to a player\'s garage (server-side)',
                 'side' => 'server',
                 'parameters' => [
                     ['name' => 'modelName', 'type' => 'string', 'description' => 'Vehicle model name (e.g., "adder")'],
@@ -187,7 +169,7 @@ class GetQBCoreFunction extends Tool
             ],
             'DeleteVehicle' => [
                 'namespace' => 'Player',
-                'description' => 'Remove a vehicle from a player\'s garage',
+                'description' => 'Remove a vehicle from a player\'s garage (server-side)',
                 'side' => 'server',
                 'parameters' => [
                     ['name' => 'plate', 'type' => 'string', 'description' => 'License plate of vehicle to remove'],
@@ -195,34 +177,6 @@ class GetQBCoreFunction extends Tool
                 'returns' => ['type' => 'boolean', 'description' => 'Success status'],
                 'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    Player.Functions.DeleteVehicle('QBTEST')\n    TriggerClientEvent('QBCore:Notify', source, 'Vehicle removed from garage')\nend",
                 'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    Player.Functions.DeleteVehicle('QBTEST');\n    TriggerClientEvent('QBCore:Notify', global.source, 'Vehicle removed from garage');\n}",
-            ],
-
-            // Utility Functions
-            'Notify' => [
-                'namespace' => 'Utility',
-                'description' => 'Send a notification to a player',
-                'side' => 'client',
-                'parameters' => [
-                    ['name' => 'source', 'type' => 'int', 'description' => 'Player server ID'],
-                    ['name' => 'message', 'type' => 'string', 'description' => 'Notification message'],
-                    ['name' => 'type', 'type' => 'string', 'description' => 'Type: "success", "error", "info" (default: info)'],
-                    ['name' => 'length', 'type' => 'int|nil', 'description' => 'Duration in milliseconds'],
-                ],
-                'returns' => ['type' => 'void', 'description' => 'No return value'],
-                'lua_example' => "TriggerClientEvent('QBCore:Notify', source, 'Hello Player!', 'success', 5000)",
-                'js_example' => "TriggerClientEvent('QBCore:Notify', global.source, 'Hello Player!', 'success', 5000);",
-            ],
-            'HasItem' => [
-                'namespace' => 'Player',
-                'description' => 'Check if a player has an item',
-                'side' => 'server',
-                'parameters' => [
-                    ['name' => 'item', 'type' => 'string', 'description' => 'Item name to check'],
-                    ['name' => 'amount', 'type' => 'int|nil', 'description' => 'Minimum amount required'],
-                ],
-                'returns' => ['type' => 'boolean', 'description' => 'True if player has item'],
-                'lua_example' => "local Player = QBCore.Functions.GetPlayer(source)\nif Player then\n    if Player.Functions.GetItemByName('water') then\n        print('Has water')\n    end\nend",
-                'js_example' => "const Player = QBCore.Functions.GetPlayer(global.source);\nif (Player) {\n    if (Player.Functions.GetItemByName('water')) {\n        console.log('Has water');\n    }\n}",
             ],
         ];
 
@@ -258,7 +212,7 @@ class GetQBCoreFunction extends Tool
         return [
             'function_name' => $schema
                 ->string()
-                ->description('The name of the QBCore function to look up (e.g., "QBCore.Functions.GetPlayer", "AddMoney")')
+                ->description('The name of the QBCore server function to look up (e.g., "QBCore.Functions.GetPlayer", "AddMoney", "SetJob")')
                 ->required(),
             'language' => $schema
                 ->string()
