@@ -11,10 +11,16 @@ use App\Mcp\Resources\BestPractices;
 use App\Mcp\Resources\CodeSnippets;
 use App\Mcp\Resources\DatabaseQueries;
 use App\Mcp\Resources\FrameworkComparison;
+use App\Mcp\Tools\COX\Doorlock\Client\GetOxDoorlockClientFunction;
+use App\Mcp\Tools\COX\Doorlock\Server\GetOxDoorlockServerEvent;
+use App\Mcp\Tools\COX\Doorlock\Server\GetOxDoorlockServerFunction;
+use App\Mcp\Tools\COX\Fuel\Client\GetOxFuelClientFunction;
+use App\Mcp\Tools\COX\Fuel\Server\GetOxFuelServerFunction;
 use App\Mcp\Tools\COX\Inventory\Client\GetInventoryClientFunction;
 use App\Mcp\Tools\COX\Inventory\Server\GetInventoryServerFunction;
 use App\Mcp\Tools\COX\MySQL\GetCOXEventReference;
 use App\Mcp\Tools\COX\MySQL\GetCOXFunction;
+use App\Mcp\Tools\COX\Target\Client\GetOxTargetClientFunction;
 use App\Mcp\Tools\FiveM\Client\GetEventClientReference;
 use App\Mcp\Tools\FiveM\Client\GetNativeClientFunction;
 use App\Mcp\Tools\FiveM\GenerateManifest;
@@ -74,6 +80,12 @@ class FiveMServer extends Server
         GetCOXFunction::class,
         GetInventoryServerFunction::class,
         GetInventoryClientFunction::class,
+        GetOxTargetClientFunction::class,
+        GetOxFuelClientFunction::class,
+        GetOxFuelServerFunction::class,
+        GetOxDoorlockClientFunction::class,
+        GetOxDoorlockServerFunction::class,
+        GetOxDoorlockServerEvent::class,
     ];
 
     protected array $resources = [
