@@ -160,6 +160,38 @@ class SearchFiveMDocs extends Tool
                     'keywords' => ['qbcore', 'event', 'trigger', 'listener'],
                 ],
             ],
+            'coxdocs' => [
+                [
+                    'title' => 'COX Docs - MySQL',
+                    'url' => 'https://coxdocs.dev/',
+                    'description' => 'Complete MySQL documentation for FiveM - required component for database operations',
+                    'keywords' => ['cox', 'mysql', 'database', 'query', 'sql', 'required'],
+                ],
+                [
+                    'title' => 'COX Docs - Getting Started',
+                    'url' => 'https://coxdocs.dev/getting-started',
+                    'description' => 'Getting started with COX MySQL library setup and configuration',
+                    'keywords' => ['cox', 'mysql', 'getting started', 'setup', 'installation'],
+                ],
+                [
+                    'title' => 'COX Docs - Query Methods',
+                    'url' => 'https://coxdocs.dev/methods',
+                    'description' => 'COX library query methods for database operations (SELECT, INSERT, UPDATE, DELETE)',
+                    'keywords' => ['cox', 'mysql', 'query', 'method', 'select', 'insert', 'update', 'delete'],
+                ],
+                [
+                    'title' => 'COX Docs - Events',
+                    'url' => 'https://coxdocs.dev/events',
+                    'description' => 'COX library events and callbacks for database operations',
+                    'keywords' => ['cox', 'mysql', 'event', 'callback', 'listener'],
+                ],
+                [
+                    'title' => 'COX Docs - Transactions',
+                    'url' => 'https://coxdocs.dev/transactions',
+                    'description' => 'Database transaction handling with COX MySQL library',
+                    'keywords' => ['cox', 'mysql', 'transaction', 'commit', 'rollback'],
+                ],
+            ],
         ];
 
         $results = [];
@@ -211,7 +243,7 @@ class SearchFiveMDocs extends Tool
                 ->required(),
             'category' => $schema
                 ->string()
-                ->enum(['all', 'scripting', 'natives', 'networking', 'resources', 'qbcore'])
+                ->enum(['all', 'scripting', 'natives', 'networking', 'resources', 'qbcore', 'coxdocs'])
                 ->description('Filter results by documentation category')
                 ->default('all'),
         ];

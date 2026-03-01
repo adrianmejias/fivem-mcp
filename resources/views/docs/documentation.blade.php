@@ -159,18 +159,19 @@
                 <!-- Tool 1: SearchFiveMDocs -->
                 <div class="mb-8 border-l-4 border-indigo-500 pl-6">
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">1. SearchFiveMDocs</h3>
-                    <p class="text-gray-700 mb-4">Search FiveM and QBCore documentation for specific topics.</p>
+                    <p class="text-gray-700 mb-4">Search FiveM, QBCore, and COX MySQL documentation for specific topics.</p>
 
                     <h4 class="font-semibold text-gray-900 mb-2">Parameters:</h4>
                     <ul class="list-disc list-inside text-gray-700 mb-4 ml-4">
                         <li><code class="bg-gray-100 px-2 py-1 rounded text-sm">query</code> (required): Search query (e.g., "events",
-                            "natives", "manifest")</li>
+                            "natives", "mysql", "database")</li>
                         <li><code class="bg-gray-100 px-2 py-1 rounded text-sm">category</code> (optional): Filter by category (all,
-                            scripting, natives, networking, resources, qbcore)</li>
+                            scripting, natives, networking, resources, qbcore, coxdocs)</li>
                     </ul>
 
-                    <h4 class="font-semibold text-gray-900 mb-2">Example:</h4>
-                    <pre class="bg-gray-100 rounded p-3 text-sm"><code>Search for QBCore callbacks and exports</code></pre>
+                    <h4 class="font-semibold text-gray-900 mb-2">Examples:</h4>
+                    <pre class="bg-gray-100 rounded p-3 text-sm mb-2"><code>Search for QBCore callbacks and exports</code></pre>
+                    <pre class="bg-gray-100 rounded p-3 text-sm"><code>How do I query the database with COX MySQL?</code></pre>
                     </div>
 
                     <!-- Tool 2: GetNativeFunction -->
@@ -467,6 +468,9 @@
                 <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
                     <li><a href="https://docs.fivem.net/docs/" class="text-indigo-600 hover:text-indigo-500">FiveM Documentation</a></li>
                     <li><a href="https://docs.fivem.net/natives/" class="text-indigo-600 hover:text-indigo-500">FiveM Natives Reference</a></li>
+                    <li><a href="https://coxdocs.dev/" class="text-indigo-600 hover:text-indigo-500">COX MySQL Documentation</a> - Required
+                        for database operations</li>
+                    <li><a href="https://docs.qbcore.org/" class="text-indigo-600 hover:text-indigo-500">QBCore Documentation</a></li>
                     <li><a href="https://laravel.com/docs/mcp" class="text-indigo-600 hover:text-indigo-500">Laravel MCP Documentation</a></li>
                     <li><a href="https://modelcontextprotocol.io/" class="text-indigo-600 hover:text-indigo-500">Model Context Protocol</a></li>
                 </ul>
