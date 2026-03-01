@@ -9,11 +9,16 @@ use App\Mcp\Prompts\DebugIssues;
 use App\Mcp\Prompts\OptimizePerformance;
 use App\Mcp\Resources\BestPractices;
 use App\Mcp\Resources\CodeSnippets;
+use App\Mcp\Resources\DatabaseQueries;
 use App\Mcp\Resources\FrameworkComparison;
 use App\Mcp\Tools\GenerateManifest;
 use App\Mcp\Tools\GenerateResourceBoilerplate;
+use App\Mcp\Tools\GetCOXEventReference;
+use App\Mcp\Tools\GetCOXFunction;
 use App\Mcp\Tools\GetEventReference;
 use App\Mcp\Tools\GetNativeFunction;
+use App\Mcp\Tools\GetQBCoreEventReference;
+use App\Mcp\Tools\GetQBCoreFunction;
 use App\Mcp\Tools\SearchFiveMDocs;
 use Laravel\Mcp\Server;
 use Laravel\Mcp\Server\Attributes\Instructions;
@@ -43,12 +48,17 @@ class FiveMServer extends Server
         GenerateManifest::class,
         GetEventReference::class,
         GenerateResourceBoilerplate::class,
+        GetQBCoreEventReference::class,
+        GetQBCoreFunction::class,
+        GetCOXEventReference::class,
+        GetCOXFunction::class,
     ];
 
     protected array $resources = [
         CodeSnippets::class,
         BestPractices::class,
         FrameworkComparison::class,
+        DatabaseQueries::class,
     ];
 
     protected array $prompts = [

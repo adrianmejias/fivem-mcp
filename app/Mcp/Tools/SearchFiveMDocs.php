@@ -191,6 +191,36 @@ class SearchFiveMDocs extends Tool
                     'description' => 'Database transaction handling with COX MySQL library',
                     'keywords' => ['cox', 'mysql', 'transaction', 'commit', 'rollback'],
                 ],
+                [
+                    'title' => 'COX Docs - Prepared Statements',
+                    'url' => 'https://coxdocs.dev/prepared-statements',
+                    'description' => 'Prepared statements for secure SQL queries and SQL injection prevention',
+                    'keywords' => ['cox', 'mysql', 'prepared', 'statement', 'security', 'injection'],
+                ],
+                [
+                    'title' => 'COX Docs - Connection Pooling',
+                    'url' => 'https://coxdocs.dev/connection-pooling',
+                    'description' => 'Connection pooling and management for optimal database performance',
+                    'keywords' => ['cox', 'mysql', 'connection', 'pool', 'pooling', 'performance'],
+                ],
+                [
+                    'title' => 'COX Docs - Common Patterns',
+                    'url' => 'https://coxdocs.dev/patterns',
+                    'description' => 'Common database patterns (CRUD operations, async queries, error handling)',
+                    'keywords' => ['cox', 'mysql', 'pattern', 'crud', 'create', 'read', 'update', 'delete'],
+                ],
+                [
+                    'title' => 'COX Docs - Debugging & Performance',
+                    'url' => 'https://coxdocs.dev/debugging',
+                    'description' => 'Debugging MySQL queries, performance optimization, and troubleshooting',
+                    'keywords' => ['cox', 'mysql', 'debug', 'performance', 'optimize', 'slow', 'error'],
+                ],
+                [
+                    'title' => 'COX Docs - Best Practices',
+                    'url' => 'https://coxdocs.dev/best-practices',
+                    'description' => 'Database best practices and conventions for FiveM development',
+                    'keywords' => ['cox', 'mysql', 'best', 'practice', 'convention', 'standard'],
+                ],
             ],
         ];
 
