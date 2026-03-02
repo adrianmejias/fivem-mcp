@@ -48,13 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Remove active class from all buttons
             tabButtons.forEach(btn => {
-                btn.classList.remove('active', 'border-indigo-500', 'text-indigo-600', 'dark:text-indigo-400');
+                btn.classList.remove('active', 'border-gta-orange', 'text-gta-orange');
                 btn.classList.add('border-transparent', 'text-gray-500', 'dark:text-gray-400');
             });
 
             // Add active class to clicked button
             this.classList.remove('border-transparent', 'text-gray-500', 'dark:text-gray-400');
-            this.classList.add('active', 'border-indigo-500', 'text-indigo-600', 'dark:text-indigo-400');
+            this.classList.add('active', 'border-gta-orange', 'text-gta-orange');
 
             // Hide all tab contents
             tabContents.forEach(content => {

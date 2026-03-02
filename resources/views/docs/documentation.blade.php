@@ -21,12 +21,12 @@
                 <div class="border-b border-gray-200 dark:border-gray-700 mb-6">
                     <nav class="-mb-px flex space-x-8">
                         <button data-tab="remote"
-                            class="transition-all duration-200 ease-in-out active border-b-2 border-indigo-500 py-4 px-1 text-center text-sm font-medium text-indigo-600 dark:text-indigo-400">
+                            class="transition-all duration-200 ease-in-out active border-b-2 border-gta-orange py-4 px-1 text-center text-sm font-medium text-gta-orange">
                             <span class="flex items-center">
                                 <span class="mr-2">🌐</span>
                                 Remote Server
                                 <span
-                                    class="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200">
+                                    class="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-700 border border-gta-orange text-gta-orange">
                                     Recommended
                                 </span>
                             </span>
@@ -45,7 +45,7 @@
                 <div class="tab-content-container">
                     <!-- Remote Server Option -->
                     <div data-tab-content="remote" class="animate-fade-in active">
-                        <div class="bg-indigo-50 dark:bg-indigo-900/20 border-l-4 border-indigo-500 p-6">
+                        <div class="bg-gray-100 dark:bg-gray-700/30 border-l-4 border-gta-orange p-6">
                             <p class="text-gray-700 dark:text-gray-300 mb-4">
                                 <strong>Easy setup!</strong> Connect to a hosted MCP server. This is the easiest option and
                                 works from anywhere without any local setup.
@@ -65,13 +65,13 @@
                             <p class="text-gray-700 dark:text-gray-300 mb-3">Add this configuration (replace with your
                                 actual
                                 server URL):</p>
-                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>{
-                  "mcpServers": {
-                    "fivem": {
-                      "url": "https://your-domain.com/fivem"
-                    }
-                  }
-                }</code></pre>
+                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>@verbatim{
+    "mcpServers": {
+        "fivem": {
+            "url": "https://your-domain.com/fivem"
+        }
+    }
+}@endverbatim</code></pre>
                         </div>
 
                         <div class="mt-6">
@@ -88,15 +88,15 @@
                                 </li>
                             </ul>
 
-                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>{
-                  "mcp": {
-                    "servers": {
-                      "fivem": {
-                        "url": "https://your-domain.com/fivem"
-                      }
-                    }
-                  }
-                }</code></pre>
+                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>@verbatim{
+    "mcp": {
+        "servers": {
+            "fivem": {
+                "url": "https://your-domain.com/fivem"
+            }
+        }
+    }
+}@endverbatim</code></pre>
                         </div>
                     </div>
 
@@ -110,18 +110,18 @@
 
                             <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Claude Desktop Configuration:</h4>
                             <p class="text-gray-700 dark:text-gray-300 mb-3">Edit your configuration file and add:</p>
-                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto mb-4"><code>{
-                  "mcpServers": {
-                    "fivem": {
-                      "command": "/path/to/php",
-                      "args": [
-                        "/path/to/fivem-mcp/artisan",
-                        "mcp:start",
-                        "fivem"
-                      ]
-                    }
-                  }
-                }</code></pre>
+                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto mb-4"><code>@verbatim{
+    "mcpServers": {
+        "fivem": {
+            "command": "/path/to/php",
+            "args": [
+            "/path/to/fivem-mcp/artisan",
+            "mcp:start",
+            "fivem"
+            ]
+        }
+    }
+}@endverbatim</code></pre>
 
                             <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Command Line Usage:</h4>
                             <p class="text-gray-700 dark:text-gray-300 mb-3">For any MCP-compatible client:</p>
@@ -135,30 +135,30 @@
                                 <code
                                     class="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-2 py-1 rounded text-sm">settings.json</code>:
                             </p>
-                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>{
-                                              "mcp": {
-                                                "servers": {
-                                                  "fivem": {
-                                                    "command": "php",
-                                                    "args": ["artisan", "mcp:start", "fivem"],
-                                                    "cwd": "/path/to/fivem-mcp"
-                                                  }
-                                                }
-                                              }
-                                            }</code></pre>
+                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>@verbatim{
+    "mcp": {
+        "servers": {
+            "fivem": {
+                "command": "php",
+                "args": ["artisan", "mcp:start", "fivem"],
+                "cwd": "/path/to/fivem-mcp"
+            }
+        }
+    }
+}@endverbatim</code></pre>
 
                             <p class="text-gray-700 dark:text-gray-300 mb-3 mt-4"><strong>Or use the full PHP path:</strong>
                             </p>
-                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>{
-                "mcp": {
-                    "servers": {
-                        "fivem": {
-                            "command": "/path/to/php",
-                            "args": ["/path/to/fivem-mcp/artisan", "mcp:start", "fivem"]
-                        }
-                    }
-                }
-            }</code></pre>
+                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>@verbatim{
+    "mcp": {
+        "servers": {
+            "fivem": {
+                "command": "/path/to/php",
+                "args": ["/path/to/fivem-mcp/artisan", "mcp:start", "fivem"]
+            }
+        }
+    }
+}@endverbatim</code></pre>
                         </div>
                     </div>
                 </div>
@@ -188,22 +188,20 @@
                 @foreach ($groupedTools as $category => $categoryTools)
                     <div class="mb-8">
                         <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4 flex items-center">
-                            <span class="inline-block w-1 h-6 bg-indigo-500 mr-3"></span>
+                            <span class="inline-block w-1 h-6 bg-gta-orange mr-3"></span>
                             {{ $category }} Tools
                             <span
                                 class="ml-3 text-sm font-normal text-gray-500 dark:text-gray-400">({{ count($categoryTools) }})</span>
                         </h3>
 
                         @foreach ($categoryTools as $index => $tool)
-                            <div class="mb-6 border-l-4 border-indigo-500 pl-6">
+                            <div class="mb-6 border-l-4 border-gta-orange pl-6">
                                 <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">{{ $tool['name'] }}</h4>
                                 <p class="text-gray-700 dark:text-gray-300">{{ $tool['description'] }}</p>
                             </div>
                         @endforeach
                     </div>
                 @endforeach
-
-
             </section>
 
             <!-- Available Resources -->
@@ -268,41 +266,42 @@
                         class="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-2 py-1 rounded text-sm">app/Mcp/Tools/</code>:
                 </p>
 
-                <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto mb-4"><code>&lt;?php
+                <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto mb-4"><code>@verbatim&lt;?php
 
-                                            namespace App\Mcp\Tools;
+namespace App\Mcp\Tools;
 
-                                            use Illuminate\Contracts\JsonSchema\JsonSchema;
-                                            use Laravel\Mcp\Request;
-                                            use Laravel\Mcp\Response;
-                                            use Laravel\Mcp\Server\Attributes\Description;
-                                            use Laravel\Mcp\Server\Tool;
+use Illuminate\Contracts\JsonSchema\JsonSchema;
+use Laravel\Mcp\Request;
+use Laravel\Mcp\Response;
+use Laravel\Mcp\Server\Attributes\Description;
+use Laravel\Mcp\Server\Tool;
 
-                                            #[Description('Your tool description')]
-                                            class YourTool extends Tool
-                                            {
-                                                public function handle(Request $request): Response
-                                                {
-                                                    // Tool logic here
-                                                    return Response::text('Result');
-                                                }
+#[Description('Your tool description')]
+class YourTool extends Tool
+{
+    public function handle(Request $request): Response
+    {
+        // Tool logic here
+        return Response::text('Result');
+    }
 
-                                                public function schema(JsonSchema $schema): array
-                                                {
-                                                    return [
-                                                        'param' => $schema->string()->required(),
-                                                    ];
-                                                }
-                                            }</code></pre>
+    public function schema(JsonSchema $schema): array
+    {
+        return [
+            'param' => $schema->string()->required(),
+        ];
+    }
+}
+@endverbatim</code></pre>
 
                 <p class="text-gray-700 dark:text-gray-300 mb-4">2. Register the tool in <code
                         class="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-2 py-1 rounded text-sm">app/Mcp/Servers/FiveMServer.php</code>:
                 </p>
 
-                <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto mb-4"><code>protected array $tools = [
-                                                // ... existing tools
-                                                \App\Mcp\Tools\YourTool::class,
-                                            ];</code></pre>
+                <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto mb-4"><code>@verbatimprotected array $tools = [
+    // ... existing tools
+    \App\Mcp\Tools\YourTool::class,
+];@endverbatim</code></pre>
 
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3 mt-6">Code Formatting</h3>
                 <p class="text-gray-700 dark:text-gray-300 mb-4">Format code with Laravel Pint:</p>
@@ -327,25 +326,19 @@
             <section class="mb-12">
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Resources</h2>
                 <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2 ml-4">
-                    <li><a href="https://docs.fivem.net/docs/"
-                            class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300">FiveM
+                    <li><a href="https://docs.fivem.net/docs/" class="link-gta">FiveM
                             Documentation</a></li>
-                    <li><a href="https://docs.fivem.net/natives/"
-                            class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300">FiveM
+                    <li><a href="https://docs.fivem.net/natives/" class="link-gta">FiveM
                             Natives Reference</a></li>
-                    <li><a href="https://coxdocs.dev/"
-                            class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300">COX
+                    <li><a href="https://coxdocs.dev/" class="link-gta">COX
                             MySQL
                             Documentation</a> - Required
                         for database operations</li>
-                    <li><a href="https://docs.qbcore.org/"
-                            class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300">QBCore
+                    <li><a href="https://docs.qbcore.org/" class="link-gta">QBCore
                             Documentation</a></li>
-                    <li><a href="https://laravel.com/docs/mcp"
-                            class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300">Laravel
+                    <li><a href="https://laravel.com/docs/mcp" class="link-gta">Laravel
                             MCP Documentation</a></li>
-                    <li><a href="https://modelcontextprotocol.io/"
-                            class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300">Model
+                    <li><a href="https://modelcontextprotocol.io/" class="link-gta">Model
                             Context Protocol</a></li>
                 </ul>
             </section>

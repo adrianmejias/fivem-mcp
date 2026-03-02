@@ -30,12 +30,12 @@
                 <div class="border-b border-gray-200 dark:border-gray-700 mb-6">
                     <nav class="-mb-px flex space-x-8">
                         <button data-tab="remote"
-                            class="transition-all duration-200 ease-in-out active border-b-2 border-indigo-500 py-4 px-1 text-center text-sm font-medium text-indigo-600 dark:text-indigo-400">
+                            class="transition-all duration-200 ease-in-out active border-b-2 border-gta-orange py-4 px-1 text-center text-sm font-medium text-gta-orange">
                             <span class="flex items-center">
                                 <span class="mr-2">🌐</span>
                                 Remote Server
                                 <span
-                                    class="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200">
+                                    class="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-700 border border-gta-orange text-gta-orange">
                                     Recommended
                                 </span>
                             </span>
@@ -54,8 +54,8 @@
                 <div class="tab-content-container">
                     <!-- Remote Setup Tab -->
                     <div data-tab-content="remote" class="animate-fade-in active">
-                        <div class="bg-indigo-50 dark:bg-indigo-900/20 border-l-4 border-indigo-500 p-4 mb-6">
-                            <p class="text-sm text-indigo-800 dark:text-indigo-200">
+                        <div class="bg-gray-100 dark:bg-gray-700/30 border-l-4 border-gta-orange p-4 mb-6">
+                            <p class="text-sm text-gray-800 dark:text-gray-200">
                                 <strong>Easy setup!</strong> Connect to a hosted MCP server. Works from anywhere without any
                                 local
                                 installation.
@@ -99,41 +99,41 @@
                             <p class="text-gray-700 dark:text-gray-300 mb-3">Add this configuration (replace the URL with
                                 your actual server URL):
                             </p>
-                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>{
-            "mcpServers": {
-                "fivem": {
-                    "url": "https://your-domain.com/fivem"
-                }
-            }
-        }</code></pre>
+                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>@verbatim{
+    "mcpServers": {
+        "fivem": {
+            "url": "https://your-domain.com/fivem"
+        }
+    }
+}@endverbatim</code></pre>
 
-                            <p class="text-gray-700 mb-3 mt-6"><strong>For VSCode (Cline Extension):</strong></p>
-                            <p class="text-gray-700 mb-3">Edit your VSCode <code
-                                    class="bg-gray-100 px-2 py-1 rounded text-sm">settings.json</code>:
+                            <p class="text-gray-700 dark:text-gray-300 mb-3 mt-6"><strong>For VSCode (Cline Extension):</strong></p>
+                            <p class="text-gray-700 dark:text-gray-300 mb-3">Edit your VSCode <code
+                                    class="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-2 py-1 rounded text-sm">settings.json</code>:
                             </p>
-                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>{
-                "mcp": {
-                "servers": {
-                    "fivem": {
-                        "url": "https://your-domain.com/fivem"
-                    }
-                }
+                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>@verbatim{
+    "mcp": {
+        "servers": {
+            "fivem": {
+                "url": "https://your-domain.com/fivem"
             }
-        }</code></pre>
+        }
+    }
+}@endverbatim</code></pre>
                         </div>
 
                         <!-- Step 3 -->
                         <div class="mb-6">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-3">3. Restart Claude Desktop</h3>
-                            <p class="text-gray-700">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">3. Restart Claude Desktop</h3>
+                            <p class="text-gray-700 dark:text-gray-300">
                                 Completely quit and restart Claude Desktop for changes to take effect.
                             </p>
                         </div>
 
                         <!-- Step 4 -->
                         <div class="mb-6">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-3">4. Verify Connection</h3>
-                            <p class="text-gray-700">
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">4. Verify Connection</h3>
+                            <p class="text-gray-700 dark:text-gray-300">
                                 In Claude Desktop, you should see a small 🔌 icon or indication that the FiveM MCP server is
                                 connected.
                             </p>
@@ -189,63 +189,63 @@
                             </ul>
 
                             <p class="text-gray-700 dark:text-gray-300 mb-3">Add this configuration:</p>
-                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto mb-4"><code>{
-            "mcpServers": {
-                "fivem": {
-                    "command": "php",
-                    "args": [
-                        "artisan",
-                        "mcp:start",
-                        "fivem"
-                    ],
-                    "cwd": "/path/to/fivem-mcp"
-                }
-            }
-        }</code></pre>
+                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto mb-4"><code>@verbatim{
+    "mcpServers": {
+        "fivem": {
+            "command": "php",
+            "args": [
+                "artisan",
+                "mcp:start",
+                "fivem"
+            ],
+            "cwd": "/path/to/fivem-mcp"
+        }
+    }
+}@endverbatim</code></pre>
 
                             <p class="text-gray-700 dark:text-gray-300 mb-3"><strong>Or use the full PHP path (e.g., for
                                     Herd):</strong></p>
-                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>{
-            "mcpServers": {
-                "fivem": {
-                    "command": "/path/to/php",
-                    "args": [
-                        "/path/to/fivem-mcp/artisan",
-                        "mcp:start",
-                        "fivem"
-                    ]
-                }
-            }
-        }</code></pre>
+                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>@verbatim{
+    "mcpServers": {
+        "fivem": {
+            "command": "/path/to/php",
+            "args": [
+                "/path/to/fivem-mcp/artisan",
+                "mcp:start",
+                "fivem"
+            ]
+        }
+    }
+}@endverbatim</code></pre>
 
                             <p class="text-gray-700 dark:text-gray-300 mb-3 mt-6"><strong>For VSCode (Cline
                                     Extension):</strong></p>
                             <p class="text-gray-700 dark:text-gray-300 mb-3">Edit your VSCode <code
                                     class="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-2 py-1 rounded text-sm">settings.json</code>:
                             </p>
-                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto mb-4"><code>{
-            "mcp": {
-                "servers": {
-                    "fivem": {
-                        "command": "php",
-                        "args": ["artisan", "mcp:start", "fivem"],
-                        "cwd": "/path/to/fivem-mcp"
-                    }
-                }
+                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto mb-4"><code>@verbatim{
+    "mcp": {
+        "servers": {
+            "fivem": {
+                "command": "php",
+                "args": ["artisan", "mcp:start", "fivem"],
+                "cwd": "/path/to/fivem-mcp"
             }
-        }</code></pre>
+        }
+    }
+}@endverbatim</code></pre>
 
                             <p class="text-gray-700 dark:text-gray-300 mb-3"><strong>Or with full paths:</strong></p>
-                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>{
-            "mcp": {
-                "servers": {
-                    "fivem": {
-                        "command": "/path/to/php",
-                        "args": ["/path/to/fivem-mcp/artisan", "mcp:start", "fivem"]
-                    }
-                }
+                            <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>@verbatim{
+    "mcp": {
+        "servers": {
+            "fivem": {
+                "command": "/path/to/php",
+                "args": ["/path/to/fivem-mcp/artisan", "mcp:start", "fivem"]
             }
-        }</code></pre>
+        }
+    }
+}@endverbatim</code></pre>
                         </div>
 
                         <!-- Step 3 -->
@@ -275,31 +275,31 @@
                 <p class="text-gray-700 dark:text-gray-300 mb-4">Once connected, try these prompts in Claude:</p>
 
                 <div class="space-y-4">
-                    <div class="border-l-4 border-indigo-500 pl-4">
+                    <div class="border-l-4 border-gta-orange pl-4">
                         <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Example 1: Search Documentation</h4>
                         <pre
                             class="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded p-3 text-sm"><code>Search FiveM docs for "state bags"</code></pre>
                     </div>
 
-                    <div class="border-l-4 border-indigo-500 pl-4">
+                    <div class="border-l-4 border-gta-orange pl-4">
                         <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Example 2: Look Up a Native</h4>
                         <pre
                             class="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded p-3 text-sm"><code>What does the GetPlayerPed native function do? Show me an example.</code></pre>
                     </div>
 
-                    <div class="border-l-4 border-indigo-500 pl-4">
+                    <div class="border-l-4 border-gta-orange pl-4">
                         <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Example 3: Generate a Manifest</h4>
                         <pre
                             class="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded p-3 text-sm"><code>Generate a fxmanifest.lua for my resource called "vehicle-shop" using ESX framework</code></pre>
                     </div>
 
-                    <div class="border-l-4 border-indigo-500 pl-4">
+                    <div class="border-l-4 border-gta-orange pl-4">
                         <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Example 4: List Events</h4>
                         <pre
                             class="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded p-3 text-sm"><code>Show me all FiveM core server events</code></pre>
                     </div>
 
-                    <div class="border-l-4 border-indigo-500 pl-4">
+                    <div class="border-l-4 border-gta-orange pl-4">
                         <h4 class="font-semibold text-gray-900 dark:text-white mb-2">Example 5: Create Boilerplate</h4>
                         <pre
                             class="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded p-3 text-sm"><code>Create a complete resource structure for a QBCore script called "bank-heist" with NUI</code></pre>
@@ -316,14 +316,14 @@
                     <ol class="list-decimal list-inside text-gray-700 dark:text-gray-300 space-y-3 ml-4">
                         <li>
                             <strong>Check PHP Path:</strong> Make sure the PHP path in your config is correct
-                            <pre class="bg-gray-900 text-gray-100 rounded p-3 mt-2 overflow-x-auto"><code>which php
-                                    # or for Herd:
-                                    ls -la "~/Library/Application Support/Herd/bin/"</code></pre>
+                            <pre class="bg-gray-900 text-gray-100 rounded p-3 mt-2 overflow-x-auto"><code>@verbatimwhich php
+# or for Herd:
+ls -la "~/Library/Application Support/Herd/bin/"@endverbatim</code></pre>
                         </li>
                         <li>
                             <strong>Test Manually:</strong> Run the server command directly
-                            <pre class="bg-gray-900 text-gray-100 rounded p-3 mt-2 overflow-x-auto"><code>cd /path/to/fivem-mcp
-                                    php artisan mcp:start fivem</code></pre>
+                            <pre class="bg-gray-900 text-gray-100 rounded p-3 mt-2 overflow-x-auto"><code>@verbatimcd /path/to/fivem-mcp
+php artisan mcp:start fivem@endverbatim</code></pre>
                         </li>
                         <li>
                             <strong>Check Logs:</strong> Look at Claude Desktop logs
@@ -340,8 +340,8 @@
                 <div class="mb-6">
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Permission Issues</h3>
                     <p class="text-gray-700 dark:text-gray-300 mb-3">If you get permission errors:</p>
-                    <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>cd /path/to/fivem-mcp
-                                    chmod +x artisan</code></pre>
+                    <pre class="bg-gray-900 text-gray-100 rounded p-4 overflow-x-auto"><code>@verbatimcd /path/to/fivem-mcp
+chmod +x artisan@endverbatim</code></pre>
                 </div>
 
                 <div class="mb-6">
@@ -357,7 +357,7 @@
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Next Steps</h2>
                 <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2 ml-4">
                     <li><a href="{{ route('docs.documentation') }}"
-                            class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300">Read
+                            class="link-gta">Read
                             the full
                             documentation</a></li>
                     <li>Explore all 5 tools in the MCP Inspector</li>
@@ -372,11 +372,11 @@
                 <p class="text-gray-700 dark:text-gray-300 mb-3">For issues:</p>
                 <ol class="list-decimal list-inside text-gray-700 dark:text-gray-300 space-y-2 ml-4">
                     <li>Check <a href="https://laravel.com/docs/mcp"
-                            class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300">Laravel
+                        class="link-gta">Laravel
                             MCP
                             Documentation</a></li>
                     <li>Check <a href="https://docs.fivem.net/"
-                            class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300">FiveM
+                        class="link-gta">FiveM
                             Documentation</a></li>
                     <li>Review server logs</li>
                     <li>Open a GitHub issue</li>

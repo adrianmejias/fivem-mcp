@@ -9,6 +9,35 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 
+    --color-gta-dark: #1a1a1a;
+    --color-gta-light: #f8fafc;
+    --color-gta-orange: #f57c00;
+    --color-gta-cyan: #1de9b6;
+    --color-gta-gray: #334155;
+    --color-gta-indigo: #3b82f6;
+
+    --color-gray-50: #f8fafc;
+    --color-gray-100: #f1f5f9;
+    --color-gray-200: #e2e8f0;
+    --color-gray-300: #cbd5e1;
+    --color-gray-400: #94a3b8;
+    --color-gray-500: #64748b;
+    --color-gray-600: #475569;
+    --color-gray-700: #334155;
+    --color-gray-800: #1e293b;
+    --color-gray-900: #0f172a;
+
+    --color-indigo-50: #fff7ed;
+    --color-indigo-100: #ffedd5;
+    --color-indigo-200: #fed7aa;
+    --color-indigo-300: #fdba74;
+    --color-indigo-400: #fb923c;
+    --color-indigo-500: #f57c00;
+    --color-indigo-600: #ea580c;
+    --color-indigo-700: #c2410c;
+    --color-indigo-800: #9a3412;
+    --color-indigo-900: #7c2d12;
+
     --animate-fade-in: fade-in 0.3s ease-in-out;
 
     @keyframes fade-in {
@@ -20,5 +49,77 @@
             opacity: 1;
             transform: translateY(0);
         }
+    }
+}
+
+@layer base {
+    :root {
+        color-scheme: light dark;
+    }
+
+    body {
+        @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+    }
+}
+
+@layer utilities {
+    .text-gta-neon {
+        color: var(--color-gta-cyan);
+    }
+
+    .text-gta-orange {
+        color: var(--color-gta-orange);
+    }
+
+    .bg-gta-neon {
+        background-color: var(--color-gta-cyan);
+    }
+
+    .bg-gta-orange {
+        background-color: var(--color-gta-orange);
+    }
+
+    .border-gta-neon {
+        border-color: var(--color-gta-cyan);
+    }
+
+    .border-gta-orange {
+        border-color: var(--color-gta-orange);
+    }
+}
+
+@layer components {
+    .link-gta {
+        color: var(--color-gta-cyan);
+        transition: color 0.2s ease-in-out;
+    }
+
+    .link-gta:hover {
+        color: #6ee7b7;
+    }
+
+    .btn-gta-primary {
+        background-color: var(--color-gta-orange);
+        color: #ffffff;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .btn-gta-primary:hover {
+        background-color: #ea580c;
+    }
+
+    .btn-gta-secondary {
+        background-color: transparent;
+        color: var(--color-gta-cyan);
+        border: 1px solid var(--color-gta-cyan);
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .btn-gta-secondary:hover {
+        background-color: color-mix(in oklab, var(--color-gta-cyan) 16%, transparent);
     }
 }
