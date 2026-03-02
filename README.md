@@ -247,6 +247,5 @@ MIT License - See LICENSE file for details
 ## Support
 
 For issues or questions:
-- Check the [documentation site](local)
 - Review [FiveM docs](https://docs.fivem.net/)
 - Open an issue on GitHub
