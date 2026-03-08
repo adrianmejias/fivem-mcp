@@ -189,14 +189,14 @@
                         To connect to the FiveM MCP server, use the following configuration in your MCP client:
                     </p>
                     <pre
-                        class="bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded p-4 text-sm overflow-x-auto"><code>@verbatim{
+                        class="bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded p-4 text-sm overflow-x-auto"><code>{
     "servers": {
         "fivem": {
             "url": "{{ route('fivem') }}",
             "type": "http"
         }
     }
-}@endverbatim</code></pre>
+}</code></pre>
                 </div>
                 <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
                     <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">External Links</h3>
