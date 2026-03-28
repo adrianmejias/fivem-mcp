@@ -7,7 +7,7 @@ A comprehensive Model Context Protocol (MCP) server for FiveM (GTA5) development
 The FiveM MCP Server enables seamless integration with AI coding assistants (Claude, ChatGPT, etc.) to provide:
 - **Native function lookups** with client/server separation
 - **Event documentation** for all frameworks
-- **Framework support** for Standalone, ESX, QBCore, and COX
+- **Framework support** for Standalone, ESX, QBCore, COX, and Prodigy Scripts (prp-bridge)
 - **Resource generation** with customizable boilerplate
 - **Documentation search** across FiveM, QBCore, and COX MySQL
 - **Code snippets and best practices** for common patterns
@@ -81,32 +81,45 @@ Configure in your AI client settings:
 
 ## Tools
 
-The MCP server includes 15 powerful tools organized by framework and execution side:
+The MCP server includes 30 powerful tools organized by framework and execution side:
 
-### FiveM Core (5 tools)
+### FiveM Core (7 tools)
 - **SearchFiveMDocs** - Search FiveM, QBCore, and COX documentation
 - **GetNativeClientFunction** - Look up client-side native functions (10 natives)
 - **GetNativeServerFunction** - Look up server-side native functions (12 natives)
 - **GetEventClientReference** - Client-side event reference (5 events)
 - **GetEventServerReference** - Server-side event reference (4+ events)
+- **GenerateManifest** - Generate fxmanifest.lua with framework support
+- **GenerateResourceBoilerplate** - Complete resource scaffolding
 
-### QBCore Framework (4 tools)
+### QBCore Framework (9 tools)
 - **GetQBCoreServerFunction** - QBCore server functions (13+ functions)
 - **GetQBCoreClientFunction** - QBCore client functions (6 functions)
 - **GetQBCoreServerEventReference** - QBCore server events (6 events)
 - **GetQBCoreClientEventReference** - QBCore client events (6 events)
+- **GetQBCoreConfig** - QBCore configuration reference
+- **GetQBCorePlayers** - Player management functions
+- **GetQBCoreResourceList** - Available QBCore resources
+- **GetQBCoreResourceReference** - Resource-specific documentation
+- **GetQBCoreSharedData** - Shared data (jobs, items, vehicles)
 
-### COX MySQL (2 tools)
+### COX / ox_libs (10 tools)
 - **GetCOXFunction** - OxMySQL database functions (8 functions)
 - **GetCOXEventReference** - COX-specific events
+- **GetInventoryServerFunction** - ox_inventory server functions (21 functions)
+- **GetInventoryClientFunction** - ox_inventory client functions (8 functions)
+- **GetOxDoorlockClientFunction** - ox_doorlock client API
+- **GetOxDoorlockServerFunction** - ox_doorlock server API
+- **GetOxDoorlockServerEvent** - ox_doorlock server events
+- **GetOxFuelClientFunction** - ox_fuel client API
+- **GetOxFuelServerFunction** - ox_fuel server API
+- **GetOxTargetClientFunction** - ox_target client API
 
-### ox_inventory (2 tools)
-- **GetInventoryServerFunction** - Server-side inventory management (21 functions)
-- **GetInventoryClientFunction** - Client-side inventory functions (8 functions)
-
-### Resource Generation (2 tools)
-- **GenerateManifest** - Generate fxmanifest.lua with framework support
-- **GenerateResourceBoilerplate** - Complete resource scaffolding
+### Prodigy Scripts / prp-bridge (4 tools)
+- **GetProdigyClientEventReference** - prp-bridge client-side events (11 events across notifications, callbacks, allowlist, medical)
+- **GetProdigyServerEventReference** - prp-bridge server-side events (8 events across framework, groups, medical, UniQueue)
+- **GetProdigyClientExport** - prp-bridge client exports (allowlist, prop placer, ped interactions)
+- **GetProdigyServerExport** - prp-bridge server exports (24 exports: cooldowns, allowlist, groups, UniQueue, sell shops, cases)
 
 ## Project Structure
 
@@ -114,12 +127,22 @@ The MCP server includes 15 powerful tools organized by framework and execution s
 app/Mcp/
 ├── Tools/
 │   ├── COX/
+│   │   ├── Doorlock/
+│   │   │   ├── Client/GetOxDoorlockClientFunction.php
+│   │   │   └── Server/
+│   │   │       ├── GetOxDoorlockServerFunction.php
+│   │   │       └── GetOxDoorlockServerEvent.php
+│   │   ├── Fuel/
+│   │   │   ├── Client/GetOxFuelClientFunction.php
+│   │   │   └── Server/GetOxFuelServerFunction.php
+│   │   ├── Inventory/
+│   │   │   ├── Server/GetInventoryServerFunction.php
+│   │   │   └── Client/GetInventoryClientFunction.php
 │   │   ├── MySQL/
 │   │   │   ├── GetCOXFunction.php
 │   │   │   └── GetCOXEventReference.php
-│   │   └── Inventory/
-│   │       ├── Server/GetInventoryServerFunction.php
-│   │       └── Client/GetInventoryClientFunction.php
+│   │   └── Target/
+│   │       └── Client/GetOxTargetClientFunction.php
 │   ├── FiveM/
 │   │   ├── Client/
 │   │   │   ├── GetNativeClientFunction.php
@@ -130,13 +153,25 @@ app/Mcp/
 │   │   ├── GenerateManifest.php
 │   │   ├── GenerateResourceBoilerplate.php
 │   │   └── SearchFiveMDocs.php
+│   ├── Prodigy/
+│   │   ├── Client/
+│   │   │   ├── GetProdigyClientEventReference.php
+│   │   │   └── GetProdigyClientExport.php
+│   │   └── Server/
+│   │       ├── GetProdigyServerEventReference.php
+│   │       └── GetProdigyServerExport.php
 │   └── QBCore/
+│       ├── Client/
+│       │   ├── GetQBCoreClientFunction.php
+│       │   └── GetQBCoreClientEventReference.php
 │       ├── Server/
 │       │   ├── GetQBCoreServerFunction.php
 │       │   └── GetQBCoreServerEventReference.php
-│       └── Client/
-│           ├── GetQBCoreClientFunction.php
-│           └── GetQBCoreClientEventReference.php
+│       ├── GetQBCoreConfig.php
+│       ├── GetQBCorePlayers.php
+│       ├── GetQBCoreResourceList.php
+│       ├── GetQBCoreResourceReference.php
+│       └── GetQBCoreSharedData.php
 ├── Resources/
 │   ├── CodeSnippets.php
 │   ├── BestPractices.php
@@ -186,7 +221,7 @@ php artisan test tests/Feature/GetNativeClientFunctionToolTest.php
 php artisan test --coverage
 ```
 
-**Current Test Status:** 82 tests passing ✅
+**Current Test Status:** 181 tests passing ✅
 
 ## Code Quality
 
@@ -206,6 +241,7 @@ vendor/bin/pint --test
 - [FiveM Natives Reference](https://docs.fivem.net/natives/)
 - [QBCore Documentation](https://docs.qbcore.org/)
 - [COX MySQL Documentation](https://coxdocs.dev/)
+- [Prodigy Scripts Documentation](https://docs.prodigyrp.net/)
 - [Laravel MCP Documentation](https://laravel.com/docs/mcp)
 - [Model Context Protocol](https://modelcontextprotocol.io/)
 
