@@ -1,6 +1,8 @@
 <?php
 
+use App\Mcp\Resources\BestPractices;
 use App\Mcp\Resources\CodeSnippets;
+use App\Mcp\Resources\FrameworkComparison;
 use Laravel\Mcp\Request;
 
 it('code snippets resource returns response with content', function () {
@@ -24,7 +26,7 @@ it('code snippets response contains content', function () {
 });
 
 it('best practices resource returns response with content', function () {
-    $resource = new \App\Mcp\Resources\BestPractices;
+    $resource = new BestPractices;
     $request = new Request([]);
 
     $response = $resource->handle($request);
@@ -34,7 +36,7 @@ it('best practices resource returns response with content', function () {
 });
 
 it('best practices response contains content', function () {
-    $resource = new \App\Mcp\Resources\BestPractices;
+    $resource = new BestPractices;
     $request = new Request([]);
 
     $response = $resource->handle($request);
@@ -44,7 +46,7 @@ it('best practices response contains content', function () {
 });
 
 it('framework comparison resource returns response with content', function () {
-    $resource = new \App\Mcp\Resources\FrameworkComparison;
+    $resource = new FrameworkComparison;
     $request = new Request([]);
 
     $response = $resource->handle($request);
@@ -54,7 +56,7 @@ it('framework comparison resource returns response with content', function () {
 });
 
 it('framework comparison response contains content', function () {
-    $resource = new \App\Mcp\Resources\FrameworkComparison;
+    $resource = new FrameworkComparison;
     $request = new Request([]);
 
     $response = $resource->handle($request);

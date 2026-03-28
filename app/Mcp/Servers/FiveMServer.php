@@ -28,6 +28,10 @@ use App\Mcp\Tools\FiveM\GenerateResourceBoilerplate;
 use App\Mcp\Tools\FiveM\SearchFiveMDocs;
 use App\Mcp\Tools\FiveM\Server\GetEventServerReference;
 use App\Mcp\Tools\FiveM\Server\GetNativeServerFunction;
+use App\Mcp\Tools\Prodigy\Client\GetProdigyClientEventReference;
+use App\Mcp\Tools\Prodigy\Client\GetProdigyClientExport;
+use App\Mcp\Tools\Prodigy\Server\GetProdigyServerEventReference;
+use App\Mcp\Tools\Prodigy\Server\GetProdigyServerExport;
 use App\Mcp\Tools\QBCore\Client\GetQBCoreClientEventReference;
 use App\Mcp\Tools\QBCore\Client\GetQBCoreClientFunction;
 use App\Mcp\Tools\QBCore\GetQBCoreConfig;
@@ -86,6 +90,10 @@ class FiveMServer extends Server
         GetOxDoorlockClientFunction::class,
         GetOxDoorlockServerFunction::class,
         GetOxDoorlockServerEvent::class,
+        GetProdigyClientEventReference::class,
+        GetProdigyServerEventReference::class,
+        GetProdigyClientExport::class,
+        GetProdigyServerExport::class,
     ];
 
     protected array $resources = [
